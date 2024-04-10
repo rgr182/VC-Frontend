@@ -1,0 +1,34 @@
+/* Estilos para el modal */
+.modal-header {
+    background-color: #007bff;
+    color: #fff;
+    border-bottom: none;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+#modalImage {
+    width: 250px;
+    height: 250px; /* Ajustar el tamaño de la imagen */
+    object-fit: cover; /* Para mantener la relación de aspecto */
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Estilos para el campo de nombre */
+#modalName {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Estilos para el campo de descripción */
+#modalDescription {
+    margin-bottom: 20px;
+}

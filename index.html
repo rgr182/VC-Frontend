@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asociación de Rescate de Perritos</title>
+    <!-- Enlaces a las bibliotecas de Google Maps API -->
+    <!-- Incluir jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkx8ZPwcFziyPqjMNb247_Qm4ckd8KW7g&callback=initMap"
+    async defer></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./Styles/Style.css">
+    <link rel="stylesheet" href="./Styles/Modal.css">
+    <script src="./Scripts/Map.js"></script>
+    <style>
+        /* Estilos adicionales */
+        #mapContainer {
+            height: 90vh; /* Altura del contenedor del mapa al 90% del viewport height */
+            margin-bottom: 20px;
+        }
+
+        #map {
+            height: 100%; /* Altura del mapa al 100% del contenedor */
+            width: 100%; /* Ancho del mapa al 100% del contenedor */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>De Vuelta a Casa</h1>
+    </header>
+    <div class="container">
+        <div id="searchContainer">
+            <label for="searchInput">Buscar mascota:</label>
+            <input type="text" id="searchInput" placeholder="Buscar por nombre o descripción...">
+        </div>
+        <h2>Mapa de Perritos Extraviados</h2>
+        <!-- Div para mostrar el mapa -->
+        <div id="mapContainer">
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalle del la mascota</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" src="imagen.jpg" alt="Imagen del Perrito">
+                    <!-- Asegúrate de proporcionar una imagen válida -->
+                    <p id="modalName">Nombre de la Mascota</p> <!-- Campo de nombre -->
+                    <p id="modalDescription">Descripción de la Mascota</p> <!-- Campo de descripción -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
