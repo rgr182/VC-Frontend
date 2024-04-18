@@ -12,7 +12,7 @@ function showForm(location, map) {
     // Al abrir el formulario, establecer formularioAbierto como true
     formularioAbierto = true;
 
-    // Crear el formulario HTML
+    // Crear el formulario HTML    
     var form = '<form id="petForm">' +
         '<label for="name">Nombre:</label>' +
         '<input type="text" id="name" name="name" value="Bobby"><br>' +
@@ -24,12 +24,13 @@ function showForm(location, map) {
         '<input type="text" id="gender" name="gender" value="M"><br>' +
         '<label for="address">Dirección:</label>' +
         '<input type="text" id="address" name="address" value="Calle Principal, 123"><br>' +
-        '<label for="image">Imagen:</label>' +
-        '<input type="file" id="image" name="image"><br>' + // Cambiado a un campo de archivo
+        '<label for="image">Image:</label>' +
+        '<input type="text" id="image" name="image" value="test.jpg"><br>' +
         '<input type="hidden" id="latitude" name="latitude" value="' + location.lat() + '">' +
         '<input type="hidden" id="longitude" name="longitude" value="' + location.lng() + '">' +
-        '<button id="agregarBtn" onclick="submitForm()">Agregar</button>' +
+        '<button type="button" id="agregarBtn" onclick="submitForm()">Agregar</button>' +
         '</form>';
+
 
     // Mostrar el formulario en un InfoWindow en la posición del clic derecho
     var infowindow = new google.maps.InfoWindow({

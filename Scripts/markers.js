@@ -8,36 +8,35 @@ var markers = []; // Array global para almacenar los marcadores
 
 // Función para agregar un nuevo marcador a la base de datos
 function addPet() {
-    var formData = new FormData(); // Usar FormData para manejar archivos
-
-    formData.append('name', $('#name').val());
-    formData.append('description', $('#description').val());
-    formData.append('color', $('#color').val());
-    formData.append('gender', $('#gender').val());
-    formData.append('address', $('#address').val());
-    formData.append('latitude', parseFloat($('#latitude').val()));
-    formData.append('longitude', parseFloat($('#longitude').val()));
-    formData.append('image', $('#image')[0].files[0]); // Agregar el archivo de imagen
+    var formData = {
+        name: $('#name').val(),
+        description: $('#description').val(),
+        color: $('#color').val(),
+        gender: $('#gender').val(),
+        address: $('#address').val(),
+        imageURL: $('#image').val(),
+        latitude: parseFloat($('#latitude').val()), // Asegúrate de convertir a número
+        longitude: parseFloat($('#longitude').val()) // Asegúrate de convertir a número
+    };
 
     $.ajax({
         url: 'https://localhost:7200/Pets',
         method: 'POST',
-        processData: false, // No procesar datos (FormData se encarga de eso)
-        contentType: false, // No establecer encabezado Content-Type (FormData se encarga de eso)
-        data: formData,
+        contentType: 'application/json',
+        data: JSON.stringify(formData),
         success: function (response) {
             console.log('Marcador agregado exitosamente');
             // Agregar marcador al mapa si el POST fue exitoso
             var marker = new google.maps.Marker({
-                position: { lat: formData.get('latitude'), lng: formData.get('longitude') },
+                position: { lat: formData.latitude, lng: formData.longitude },
                 map: map,
-                title: formData.get('name')
+                title: formData.name
             });
             // Agregar evento de clic izquierdo para mostrar detalle del marcador
             marker.addListener('click', function () {
-                $('#modalImage').attr('src', URL.createObjectURL(formData.get('image'))); // Obtener URL de la imagen
-                $('#modalName').text(formData.get('name')); // Asigna el nombre al modal
-                $('#modalDescription').text(formData.get('description')); // Asigna la descripción al modal
+                $('#modalImage').attr('src', formData.imageURL); // Asigna la URL de la imagen al modal
+                $('#modalName').text(formData.name); // Asigna el nombre al modal
+                $('#modalDescription').text(formData.description); // Asigna la descripción al modal
                 $('#myModal').modal('show'); // Abre el modal
             });
             // Agregar el marcador al array de marcadores
