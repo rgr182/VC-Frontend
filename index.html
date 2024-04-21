@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkx8ZPwcFziyPqjMNb247_Qm4ckd8KW7g&callback=initMap"
-    async defer></script>
+        async defer></script>
     <script src="./Scripts/geolocation.js"></script>
     <script src="./Scripts/initMap.js"></script>
     <script src="./Scripts/form.js"></script>
@@ -23,25 +23,33 @@
     <style>
         /* Estilos adicionales */
         #mapContainer {
-            height: 90vh; /* Altura del contenedor del mapa al 90% del viewport height */
+            height: 90vh;
+            /* Altura del contenedor del mapa al 90% del viewport height */
             margin-bottom: 20px;
         }
 
         #map {
-            height: 100%; /* Altura del mapa al 100% del contenedor */
-            width: 100%; /* Ancho del mapa al 100% del contenedor */
+            height: 100%;
+            /* Altura del mapa al 100% del contenedor */
+            width: 100%;
+            /* Ancho del mapa al 100% del contenedor */
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <h1>De Vuelta a Casa</h1>
+
+    <header class="custom-header">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h1 style="font-size: 2.5rem;">De Vuelta a Casa</h1>
+            <p>Una aplicación para ayudar a encontrar a lomitos extraviados</p>
+        </div>
     </header>
+
     <div class="container">
-        <div id="searchContainer">
-            <label for="searchInput">Buscar mascota:</label>
+        <div id="searchContainer" style="margin-top: 20px;">
             <input type="text" id="searchInput" placeholder="Buscar por nombre o descripción...">
+            <button style="background-color: #007bff; color: #fff; padding: 8px 16px; border: none; cursor: pointer;">Buscar</button>
         </div>
         <h2>Mapa de Perritos Extraviados</h2>
         <!-- Div para mostrar el mapa -->

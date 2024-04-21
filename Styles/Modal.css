@@ -3,8 +3,9 @@
     background-color: #007bff;
     color: #fff;
     border-bottom: none;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
-
 .modal-title {
     font-size: 1.5rem;
 }
@@ -13,10 +14,11 @@
     text-align: center;
 }
 
+
 #modalImage {
     width: 250px;
-    height: 250px; /* Ajustar el tamaño de la imagen */
-    object-fit: cover; /* Para mantener la relación de aspecto */
+    height: 250px;
+    object-fit: cover;
     border-radius: 10px;
     margin-bottom: 15px;
 }
@@ -32,3 +34,10 @@
 #modalDescription {
     margin-bottom: 20px;
 }
+
+.modal-content {
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
