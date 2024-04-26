@@ -20,35 +20,20 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./Styles/Style.css">
     <link rel="stylesheet" href="./Styles/Modal.css">
-    <style>
-        /* Estilos adicionales */
-        #mapContainer {
-            height: 90vh;
-            /* Altura del contenedor del mapa al 90% del viewport height */
-            margin-bottom: 20px;
-        }
-
-        #map {
-            height: 100%;
-            /* Altura del mapa al 100% del contenedor */
-            width: 100%;
-            /* Ancho del mapa al 100% del contenedor */
-        }
-    </style>
 </head>
 
 <body>
 
     <header class="custom-header">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h1 style="font-size: 2.5rem;">De Vuelta a Casa</h1>
+        <div>
+            <h1>De Vuelta a Casa</h1>
             <p>Una aplicación para ayudar a encontrar a lomitos extraviados</p>
         </div>
     </header>
 
     <div class="container">
-        <div id="searchContainer" style="margin-top: 20px;">
-            <input type="text" id="searchInput" placeholder="Buscar por nombre o descripción...">            
+        <div id="searchContainer">
+            <input type="text" id="searchInput" placeholder="Buscar por nombre o descripción...">
         </div>
         <h2>Mapa de Perritos Extraviados</h2>
         <!-- Div para mostrar el mapa -->

@@ -32,3 +32,30 @@ header {
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* Estilos para el header */
+.custom-header {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.custom-header h1 {
+    font-size: 2.5rem;
+}
+
+/* Estilos para el contenedor del mapa */
+#mapContainer {
+    height: 90vh;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el mapa */
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+/* Estilos para el contenedor de búsqueda */
+#searchContainer {
+    margin-top: 20px;
+}
