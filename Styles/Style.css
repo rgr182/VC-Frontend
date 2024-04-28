@@ -1,22 +1,30 @@
 @font-face {
     font-family: 'Cute Love';
-    src: url('../Fonts/CuteLove.otf') format('opentype'); /* Ruta relativa al archivo de la fuente */
+    src: url('../Fonts/CuteLove.otf') format('opentype'); /* Asegúrate de que la ruta sea correcta */
 }
 
 body {
-    background-color: rgba(233, 240, 234, 0.927); /* Cambia el color de fondo del body a un tono de gris claro */
-    font-family: 'Cute Love', cursive; /* Usa la fuente Cute Love */
+    background-color: rgba(233, 240, 234, 0.927);
+    font-family: 'Cute Love', cursive;
     margin: 0;
     padding: 0;
     text-size-adjust: 150%;
 }
 
-header {
+/* Estilos para el encabezado */
+.custom-header {
     background-color: #96065a;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agregamos una sombra suave */
-    color: #faf9f9; /* Cambiamos el color del texto para que se vea mejor sobre el fondo gris */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #faf9f9;
+    max-width: 100%; /* Ajusta el ancho del encabezado al 100% */
+    margin: 0; /* Elimina cualquier margen */
+}
+
+.custom-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
 .container {
@@ -25,42 +33,33 @@ header {
     padding: 0 20px;
 }
 
-#map {
-    height: 400px;
-    width: 100%;
-}
-
-#mapContainer {
-    height: 70vh;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilos para el header */
-.custom-header {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.custom-header h1 {
-    font-size: 2.5rem;
-}
-
-/* Estilos para el contenedor del mapa */
 #mapContainer {
     height: 90vh;
     margin-bottom: 20px;
 }
 
-/* Estilos para el mapa */
 #map {
     height: 100%;
     width: 100%;
 }
 
-/* Estilos para el contenedor de búsqueda */
 #searchContainer {
     margin-top: 20px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+}
+
+/* Estilos para el pie de página */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
