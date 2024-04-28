@@ -1,17 +1,22 @@
+@font-face {
+    font-family: 'Cute Love';
+    src: url('../Fonts/CuteLove.otf') format('opentype'); /* Ruta relativa al archivo de la fuente */
+}
+
 body {
-    background-color: rgba(45, 103, 60, 0.8); /* Cambia el color de fondo del body a un tono de gris claro */
-    font-family: Arial, sans-serif;
+    background-color: rgba(233, 240, 234, 0.927); /* Cambia el color de fondo del body a un tono de gris claro */
+    font-family: 'Cute Love', cursive; /* Usa la fuente Cute Love */
     margin: 0;
     padding: 0;
     text-size-adjust: 150%;
 }
 
 header {
-    background-color: #daf1ee;
+    background-color: #96065a;
     padding: 20px;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agregamos una sombra suave */
-    color: #0e0808; /* Cambiamos el color del texto para que se vea mejor sobre el fondo gris */
+    color: #faf9f9; /* Cambiamos el color del texto para que se vea mejor sobre el fondo gris */
 }
 
 .container {
