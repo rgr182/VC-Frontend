@@ -1,5 +1,3 @@
-// Archivo: form.js
-
 // Función para mostrar el formulario
 function showForm(location, map) {
     // Verificar si ya hay un formulario abierto
@@ -8,12 +6,7 @@ function showForm(location, map) {
     }
 
     // Mostrar animación de carga
-    showLoadingAnimation();
-
-    // Simular una demora de 1 segundo para la animación de carga
-    setTimeout(function () {
-        // Resto del código para mostrar el formulario...
-
+    showLoadingAnimation().then(function() {
         // Al abrir el formulario, establecer formularioAbierto como true
         formularioAbierto = true;
 
@@ -70,51 +63,71 @@ function showForm(location, map) {
 
         // Ocultar animación de carga después de mostrar el formulario
         hideLoadingAnimation();
-    }, 1000); // 1 segundo de demora simulada para la animación de carga
+    });
 }
 
 // Función para enviar el formulario
 function submitForm() {
+    // Verificar si se ha cargado una imagen
+    var fileInput = document.getElementById('fileInput');
+    if (fileInput.files.length === 0) {
+        alert('La imagen es obligatoria.'); // Mostrar mensaje de alerta
+        return; // Salir de la función si no se ha cargado ninguna imagen
+    }
+
     // Mostrar animación de carga
-    showLoadingAnimation();
+    showLoadingAnimation().then(function() {
+        // Simular una demora de 1 segundo para la animación de carga
+        setTimeout(function () {
+            addPet(); // Llama a la función que agrega la mascota
+            formularioAbierto = false; // Establecer el estado del formulario como cerrado
+            currentInfoWindow.close(); // Cierra el InfoWindow después de enviar el formulario
 
-    // Simular una demora de 1 segundo para la animación de carga
-    setTimeout(function () {
-        addPet(); // Llama a la función que agrega la mascota
-        formularioAbierto = false; // Establecer el estado del formulario como cerrado
-        currentInfoWindow.close(); // Cierra el InfoWindow después de enviar el formulario
-
-        // Ocultar animación de carga después de enviar el formulario
-        hideLoadingAnimation();
-    }, 1000); // 1 segundo de demora simulada para la animación de carga
+            // Ocultar animación de carga después de enviar el formulario
+            hideLoadingAnimation();
+        }, 1000); // 1 segundo de demora simulada para la animación de carga
+    });
 }
 
 // Función para mostrar la animación de carga
 function showLoadingAnimation() {
-    var loadingAnimation = document.createElement('div');
-    loadingAnimation.innerHTML = 'Cargando...'; // Puedes personalizar el mensaje de carga aquí
-    loadingAnimation.style.position = 'absolute';
-    loadingAnimation.style.top = '0';
-    loadingAnimation.style.left = '0';
-    loadingAnimation.style.width = '100%';
-    loadingAnimation.style.height = '100%';
-    loadingAnimation.style.display = 'flex';
-    loadingAnimation.style.justifyContent = 'center';
-    loadingAnimation.style.alignItems = 'center';
-    loadingAnimation.style.background = 'rgba(0, 0, 0, 0.5)';
-    loadingAnimation.style.color = '#fff';
-    loadingAnimation.style.padding = '20px';
-    loadingAnimation.style.borderRadius = '5px';
-    loadingAnimation.style.zIndex = '9999';
-    loadingAnimation.classList.add('loading-animation'); // Agrega la clase 'loading-animation' al elemento
-    document.getElementById('map').appendChild(loadingAnimation); // Adjunta el elemento al contenedor del mapa
+    return new Promise(function(resolve, reject) {
+        var loadingAnimation = document.createElement('div');
+        loadingAnimation.innerHTML = 'Cargando...'; // Puedes personalizar el mensaje de carga aquí
+        loadingAnimation.style.position = 'absolute';
+        loadingAnimation.style.top = '0';
+        loadingAnimation.style.left = '0';
+        loadingAnimation.style.width = '100%';
+        loadingAnimation.style.height = '100%';
+        loadingAnimation.style.display = 'flex';
+        loadingAnimation.style.justifyContent = 'center';
+        loadingAnimation.style.alignItems = 'center';
+        loadingAnimation.style.background = 'rgba(0, 0, 0, 0.5)';
+        loadingAnimation.style.color = '#fff';
+        loadingAnimation.style.padding = '20px';
+        loadingAnimation.style.borderRadius = '5px';
+        loadingAnimation.style.zIndex = '9999';
+        loadingAnimation.classList.add('loading-animation'); // Agrega la clase 'loading-animation' al elemento
+        document.getElementById('map').appendChild(loadingAnimation); // Adjunta el elemento al contenedor del mapa
+
+        // Resuelve la promesa después de un corto retraso para que la animación se muestre correctamente
+        setTimeout(function() {
+            resolve();
+        }, 10);
+    });
 }
 
-
-// Función para ocultar la animación de carga
+// Función para ocultar la animación de carga de forma asincrónica
 function hideLoadingAnimation() {
-    var loadingAnimation = document.querySelector('.loading-animation');
-    if (loadingAnimation) {
-        loadingAnimation.parentNode.removeChild(loadingAnimation);
-    }
+    return new Promise(function(resolve, reject) {
+        var loadingAnimation = document.querySelector('.loading-animation');
+        if (loadingAnimation) {
+            loadingAnimation.parentNode.removeChild(loadingAnimation);
+        }
+
+        // Resuelve la promesa después de un corto retraso para que la animación se oculte correctamente
+        setTimeout(function() {
+            resolve();
+        }, 10);
+    });
 }
