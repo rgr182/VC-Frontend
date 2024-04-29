@@ -32,9 +32,11 @@ function initMap() {
                             position: { lat: perrito.latitude, lng: perrito.longitude },
                             map: map,
                             title: perrito.name,
-                            description: perrito.description
+                            description: perrito.description,
+                            statusId: perrito.statusId
                         });
 
+                        debugger;
                         // Agregar el marcador al array de marcadores
                         markers.push(marker);
 

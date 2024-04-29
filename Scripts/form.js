@@ -6,7 +6,7 @@ function showForm(location, map) {
     }
 
     // Mostrar animación de carga
-    showLoadingAnimation().then(function() {
+    showLoadingAnimation().then(function () {
         // Al abrir el formulario, establecer formularioAbierto como true
         formularioAbierto = true;
 
@@ -66,6 +66,7 @@ function showForm(location, map) {
     });
 }
 
+
 // Función para enviar el formulario
 function submitForm() {
     // Verificar si se ha cargado una imagen
@@ -76,7 +77,7 @@ function submitForm() {
     }
 
     // Mostrar animación de carga
-    showLoadingAnimation().then(function() {
+    showLoadingAnimation().then(function () {
         // Simular una demora de 1 segundo para la animación de carga
         setTimeout(function () {
             addPet(); // Llama a la función que agrega la mascota
@@ -91,7 +92,7 @@ function submitForm() {
 
 // Función para mostrar la animación de carga
 function showLoadingAnimation() {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
         var loadingAnimation = document.createElement('div');
         loadingAnimation.innerHTML = 'Cargando...'; // Puedes personalizar el mensaje de carga aquí
         loadingAnimation.style.position = 'absolute';
@@ -111,7 +112,7 @@ function showLoadingAnimation() {
         document.getElementById('map').appendChild(loadingAnimation); // Adjunta el elemento al contenedor del mapa
 
         // Resuelve la promesa después de un corto retraso para que la animación se muestre correctamente
-        setTimeout(function() {
+        setTimeout(function () {
             resolve();
         }, 10);
     });
@@ -119,14 +120,14 @@ function showLoadingAnimation() {
 
 // Función para ocultar la animación de carga de forma asincrónica
 function hideLoadingAnimation() {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
         var loadingAnimation = document.querySelector('.loading-animation');
         if (loadingAnimation) {
             loadingAnimation.parentNode.removeChild(loadingAnimation);
         }
 
         // Resuelve la promesa después de un corto retraso para que la animación se oculte correctamente
-        setTimeout(function() {
+        setTimeout(function () {
             resolve();
         }, 10);
     });

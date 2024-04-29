@@ -35,6 +35,15 @@ function addPet() {
         .then(function (response) {
             // Si la carga de la imagen es exitosa, añade la URL de la imagen a petData
             petData.imageURL = response.url;
+
+            // Agregar la propiedad StatusId desde el localStorage
+            var userChoice = localStorage.getItem('userChoice');
+            if (userChoice === 'buscando') {
+                petData.StatusId = 0; // Modificar el valor según sea necesario
+            } else if (userChoice === 'reportar') {
+                petData.StatusId = 1; // Modificar el valor según sea necesario
+            }
+
             // Continúa con la llamada para agregar la mascota
             $.ajax({
                 url: 'https://localhost:7200/Pets',
@@ -83,3 +92,10 @@ function filterMarkers(searchText) {
         }
     });
 }
+
+// Agregar el listener para evitar el menú contextual del clic derecho
+$(document).ready(function () {
+    $('#map').on('contextmenu', function (event) {
+        event.preventDefault();
+    });
+});

@@ -31,18 +31,7 @@
         </div>
     </header>
 
-    <div class="container">
-        <div id="searchContainer">
-            <input type="text" id="searchInput" placeholder="Buscar por nombre o descripción...">
-        </div>
-        <h2>Mapa de Perritos Extraviados</h2>
-        <!-- Div para mostrar el mapa -->
-        <div id="mapContainer">
-            <div id="map"></div>
-        </div>
-    </div>
-
-    <!-- Modal -->
+    <!-- Modal 1-->
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -62,9 +51,67 @@
         </div>
     </div>
 
+    <!-- Modal2 -->
+    <div class="modal fade" id="ChoiseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <!-- Cambio: Agregar la clase modal-lg para hacer el modal más grande -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Selecciona una opción</h5>
+                </div>
+                <div class="modal-body">
+                    <p>¿Qué deseas hacer?</p>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-primary" id="searchBtn">Estoy buscando</button>
+                        <button type="button" class="btn btn-secondary" id="reportBtn">Quiero reportar un lomito
+                            extraviado</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agregar el botón para filtrar mascotas perdidas -->
+    <div class="container">
+        <div id="searchContainer">
+            <input type="text" id="searchInput" placeholder="Buscar por nombre o descripción...">
+        </div>
+        <div class="btn-group" role="group" aria-label="Filtrar mascotas">
+            <button type="button" class="btn btn-info" id="lostBtn">Mascotas Perdidas</button>
+            <button type="button" class="btn btn-warning" id="reportedBtn">Mascotas Reportadas</button>
+        </div>
+        <h2>Mapa de Perritos Extraviados</h2>
+        <!-- Div para mostrar el mapa -->
+        <div id="mapContainer">
+            <div id="map"></div>
+        </div>
+    </div>
+
     <footer>
         <h2>Derechos Reservados VC 2024</h2>
-    </footer>    
+    </footer>
+
+    <script>
+        $(document).ready(function () {
+            // Mostrar el modal al cargar la página
+            $('#ChoiseModal').modal('show');
+
+            // Evento al hacer clic en "Estoy buscando"
+            $('#searchBtn').click(function () {
+                // Acción cuando el usuario selecciona "Estoy buscando"
+                localStorage.setItem('userChoice', 'buscando');
+                $('#ChoiseModal').modal('hide'); // Oculta el modal
+            });
+
+            // Evento al hacer clic en "Quiero reportar un lomito extraviado"
+            $('#reportBtn').click(function () {
+                // Acción cuando el usuario selecciona "Quiero reportar un lomito extraviado"
+                localStorage.setItem('userChoice', 'reportar');
+                $('#ChoiseModal').modal('hide'); // Oculta el modal
+            });
+        });
+    </script>
 
 </body>
 
