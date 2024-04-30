@@ -1,51 +1,82 @@
-// Archivo: markers.js
-
 // Variable global para controlar el estado del formulario
 var formularioAbierto = false;
 var currentInfoWindow = null; // Variable global para controlar la ventana de información actual
 var map; // Variable global para el mapa
 var markers = []; // Array global para almacenar los marcadores
 
+// Función para cargar una imagen al servidor
+function uploadImage(file) {
+    var formData = new FormData();
+    formData.append('file', file);
+
+    return $.ajax({
+        url: 'https://localhost:7079/api/Files/upload',
+        method: 'POST',
+        processData: false,
+        contentType: false,
+        data: formData
+    });
+}
+
 // Función para agregar un nuevo marcador a la base de datos
 function addPet() {
-    var formData = {
+    var fileInput = $('#fileInput')[0].files[0];
+    var petData = {
         name: $('#name').val(),
         description: $('#description').val(),
         color: $('#color').val(),
         gender: $('#gender').val(),
         address: $('#address').val(),
-        imageURL: $('#image').val(),
-        latitude: parseFloat($('#latitude').val()), // Asegúrate de convertir a número
-        longitude: parseFloat($('#longitude').val()) // Asegúrate de convertir a número
+        latitude: parseFloat($('#latitude').val()),
+        longitude: parseFloat($('#longitude').val())
     };
 
-    $.ajax({
-        url: 'https://localhost:7200/Pets',
-        method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(formData),
-        success: function (response) {
-            console.log('Marcador agregado exitosamente');
-            // Agregar marcador al mapa si el POST fue exitoso
-            var marker = new google.maps.Marker({
-                position: { lat: formData.latitude, lng: formData.longitude },
-                map: map,
-                title: formData.name
+    uploadImage(fileInput)
+        .then(function (response) {
+            // Si la carga de la imagen es exitosa, añade la URL de la imagen a petData
+            petData.imageURL = response.url;
+
+            // Agregar la propiedad StatusId desde el localStorage
+            var userChoice = localStorage.getItem('userChoice');
+            if (userChoice === 'buscando') {
+                petData.StatusId = 0; // Modificar el valor según sea necesario
+            } else if (userChoice === 'reportar') {
+                petData.StatusId = 1; // Modificar el valor según sea necesario
+            }
+
+            // Continúa con la llamada para agregar la mascota
+            $.ajax({
+                url: 'https://localhost:7200/Pets',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(petData),
+                success: function (response) {
+                    console.log('Mascota agregada exitosamente');
+                    // Agregar marcador al mapa si el POST fue exitoso
+                    var marker = new google.maps.Marker({
+                        position: { lat: petData.latitude, lng: petData.longitude }, // Usar petData en lugar de formData
+                        map: map,
+                        title: petData.name,
+                        description: petData.description // Agregar descripción como propiedad del marcador
+                    });
+                    // Agregar evento de clic izquierdo para mostrar detalle del marcador
+                    marker.addListener('click', function () {
+                        $('#modalImage').attr('src', petData.imageURL); // Usar petData en lugar de formData
+                        $('#modalName').text(petData.name); // Usar petData en lugar de formData
+                        $('#modalDescription').text(petData.description); // Usar petData en lugar de formData
+                        $('#myModal').modal('show'); // Abre el modal
+                    });
+                    // Agregar el marcador al array de marcadores
+                    markers.push(marker);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error al agregar mascota: ', error);
+                }
             });
-            // Agregar evento de clic izquierdo para mostrar detalle del marcador
-            marker.addListener('click', function () {
-                $('#modalImage').attr('src', formData.imageURL); // Asigna la URL de la imagen al modal
-                $('#modalName').text(formData.name); // Asigna el nombre al modal
-                $('#modalDescription').text(formData.description); // Asigna la descripción al modal
-                $('#myModal').modal('show'); // Abre el modal
-            });
-            // Agregar el marcador al array de marcadores
-            markers.push(marker);
-        },
-        error: function (xhr, status, error) {
-            console.error('Error al agregar marcador: ', error);
-        }
-    });
+        })
+        .catch(function (error) {
+            console.error('Error al cargar la imagen: ', error);
+        });
 }
 
 // Función para filtrar marcadores por búsqueda
@@ -61,3 +92,10 @@ function filterMarkers(searchText) {
         }
     });
 }
+
+// Agregar el listener para evitar el menú contextual del clic derecho
+$(document).ready(function () {
+    $('#map').on('contextmenu', function (event) {
+        event.preventDefault();
+    });
+});
