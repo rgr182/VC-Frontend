@@ -1,11 +1,11 @@
 @font-face {
-    font-family: 'Cute Love';
-    src: url('../Fonts/CuteLove.otf') format('opentype'); /* Asegúrate de que la ruta sea correcta */
+    font-family: 'Yu Gothic';
+    src: url('../Fonts/yugothic.ttf') format('opentype'); /* Asegúrate de que la ruta sea correcta */
 }
 
 body {
     background-color: rgba(233, 240, 234, 0.927);
-    font-family: 'Cute Love', cursive;
+    font-family: 'Yu Gothic';
     margin: 0;
     padding: 0;
     text-size-adjust: 150%;
