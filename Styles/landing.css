@@ -23,7 +23,7 @@ body {
   }
   
   .jumbotron {
-    background-image: url('https://via.placeholder.com/1200x600');
+    background-image: url('images/Background.jpg');
     background-size: cover;
     color: #fff;
   }
