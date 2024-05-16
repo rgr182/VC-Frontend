@@ -1,64 +1,62 @@
-/* styles.css */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
   .bg-primary {
     background-color: #130912 !important;
   }
-  
+
   .bg-secondary {
     background-color: #3E1C33;
   }
-  
+
   .btn-primary {
     background-color: #602749;
     border-color: #602749;
   }
-  
+
   .btn-accent {
     background-color: #F6921D;
     border-color: #F6921D;
     color: #fff;
   }
-  
-  .jumbotron {
-    background-image: url('images/Background.jpg');
-    background-size: cover;
+
+
+  .nav-link{
     color: #fff;
   }
-  
-  .card {
-    border: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  .navbar-brand{
+    color: #F6921D;
+    font-weight: 700;
+    font-size: 20px;
   }
-  
-  .card-img-top {
-    height: 200px;
-    object-fit: cover;
+
+  .jumbotron {
+    background-image: url("../images/Background.jpg");
+    background-size: cover;
+    color: black;
+    background-repeat: no-repeat;
+    background-position: center;
   }
-  
-  .accordion .card-header {
-    background-color: #f8f9fa;
+
+  .container {
+    padding-left: 900px;
   }
-  
+
   .dark-mode {
     background-color: #333;
     color: #fff;
   }
-  
+
   .dark-mode .navbar,
   .dark-mode .jumbotron,
   .dark-mode .accordion .card-header {
     background-color: #444;
     color: #fff;
   }
-  
+
   .dark-mode .card {
     background-color: #555;
     color: #fff;
   }
-  
+
   .dark-mode .btn-light {
     background-color: #555;
     color: #fff;
