@@ -1,63 +1,127 @@
-  .bg-primary {
-    background-color: #130912 !important;
-  }
+.bg-primary {
+  background-color: #130912 !important;
+}
 
-  .bg-secondary {
-    background-color: #3E1C33;
-  }
+.bg-secondary {
+  background-color: #3E1C33;
+}
 
-  .btn-primary {
-    background-color: #602749;
-    border-color: #602749;
-  }
+.btn-primary {
+  background-color: #602749;
+  border-color: #602749;
+}
 
-  .btn-accent {
-    background-color: #F6921D;
-    border-color: #F6921D;
-    color: #fff;
-  }
+.btn-accent {
+  background-color: #F6921D;
+  border-color: #F6921D;
+  color: #fff;
+}
 
 
-  .nav-link{
-    color: #fff;
-  }
+.nav-link {
+  color: #fff;
+  margin-right: 1rem;
+}
 
-  .navbar-brand{
-    color: #F6921D;
-    font-weight: 700;
-    font-size: 20px;
-  }
+.nav-link:hover {
+  border-bottom: 2px solid #F6921D;
+  font-weight: 600;
+}
 
-  .jumbotron {
-    background-image: url("../images/Background.jpg");
-    background-size: cover;
-    color: black;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
+.navbar-brand {
+  color: #F6921D;
+  font-weight: 700;
+  font-size: 20px;
+  height: 3rem;
+}
 
-  .container {
-    padding-left: 900px;
-  }
+.navbar {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 
-  .dark-mode {
-    background-color: #333;
-    color: #fff;
-  }
+.jumbotron {
+  background-image: url("../images/header.jpg");
+  background-size: cover;
+  color: black;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
-  .dark-mode .navbar,
-  .dark-mode .jumbotron,
-  .dark-mode .accordion .card-header {
-    background-color: #444;
-    color: #fff;
-  }
+.image-start {
+  padding-left: 60rem;
+  margin-right: 4rem;
+}
 
-  .dark-mode .card {
-    background-color: #555;
-    color: #fff;
-  }
+.btn-header {
+  background-color: #130912;
+}
 
-  .dark-mode .btn-light {
-    background-color: #555;
-    color: #fff;
+.btn-header:hover {
+  background-color: #602749;
+  border-color: #602749;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.card-img-top-wrapper {
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* WIP */
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-mode .navbar,
+.dark-mode .jumbotron,
+.dark-mode .accordion .card-header {
+  background-color: #444;
+  color: #fff;
+}
+
+.dark-mode .card {
+  background-color: #555;
+  color: #fff;
+}
+
+.dark-mode .btn-light {
+  background-color: #555;
+  color: #fff;
+}
+
+@media screen and (max-width: 412px) {
+  .image-start {
+    padding-left: 10rem;
+    margin-right: 1rem;
   }
+}
