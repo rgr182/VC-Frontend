@@ -20,16 +20,37 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./Styles/Style.css">
     <link rel="stylesheet" href="./Styles/Modal.css">
+
 </head>
 
 <body>
-
     <header class="custom-header">
-        <div>
+        <div style="display: flex; align-items: center; height: 20px; padding: 16px; padding-left: 32px; padding-right: 64px; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+              <button style="background-color: transparent; border: none;">
+                <a class="logo" href="index.html"><img src="images/LogoDVA.png" alt="#" style="width: 70px; height: 70px;"/></a>
+              </button>
+            </div>
             <h1>De Vuelta a Casa</h1>
-            <p>Una aplicación para ayudar a encontrar a lomitos extraviados</p>
-        </div>
+
+            <div id="searchContainer" style="display: flex; align-items: center;">
+              <div style="display: flex; flex-direction: row; justify-content: flex-end; align-items: center; width: 100%; max-width: 100%;">
+                <input type="text"  id="searchInput" placeholder="Buscar" style="border-radius: 5px; padding: 12px 8px; width: 100%; border: 1px solid #d9d9d9; outline: none;" />
+              </div>
+            </div>
+          
+              <div>
+                <ul class="navbar-nav">
+                    <li class="nav-item" style="display: inline-flex; justify-content: space-between;">
+                      <a class="nav-link active" aria-current="page" href="#" style="color: black; margin-right: 100px; font-size: 1.5rem;">Iniciar Sesión</a>
+                      <a class="nav-link active" aria-current="page" href="#" style="color: black; margin-right: 50px; font-size: 1.5rem;">Registrarse</a>
+                    </li>
+                  </ul>
+              </div>
+          </div>
     </header>
+    
+    
 
     <!-- Modal 1-->
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -108,22 +129,46 @@
 
     <!-- Agregar el botón para filtrar mascotas perdidas -->
     <div class="container">
-        <div id="searchContainer">
-            <input type="text" id="searchInput" placeholder="Buscar por nombre o descripción...">
-        </div>
         <div class="btn-group" role="group" aria-label="Filtrar mascotas">
-            <button type="button" class="btn btn-info" id="lostBtn">Mascotas Perdidas</button>
-            <button type="button" class="btn btn-warning" id="reportedBtn">Mascotas Reportadas</button>
+            <button type="button" class="btn btn-warning" id="lostBtn" style="background-color: #f4a52c;">Mascotas Perdidas</button>
+            <button type="button" class="btn btn-warning" id="reportedBtn" style="background-color: #f4a52c;">Mascotas Reportadas</button>
+        </div>      
+
+        <div class="container">
+            <h2>Mapa de Perritos Extraviados</h2>
+            <h2 style="margin-left: 800px;">Reportes Recientes</h2>        
         </div>
-        <h2>Mapa de Perritos Extraviados</h2>
-        <!-- Div para mostrar el mapa -->
-        <div id="mapContainer">
-            <div id="map"></div>
-        </div>
-    </div>
+            <!-- Div para mostrar el mapa --> 
+
+        <div id="reportes">
+
+            <div id="mapContainer">
+                <div id="map"></div>  
+            </div>
+        
+                <div id="rep" style="background-color: #f6b756; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 4px;">
+                    <h2 style="font-size: 1.125rem; font-weight: bold; margin-bottom: 8px;">Conexión con Back</h2>
+                    <h2 style="font-size: 1.125rem; font-weight: bold; margin-bottom: 8px;">Reportes recientes de back :)</h2>
+                </div>
+        </div>   
+    </div>                     
 
     <footer>
-        <h2>Derechos Reservados VC 2024</h2>
+        <div style="background-color: black; display: flex; justify-content: space-between;">
+            <div style="display: flex; margin-top: 20px;">
+              <a style="font-weight: bold; color: #d9d9d9; font-size: 0.875rem; margin-left: 20px;">
+                De Vuelta a Casa. Todos los derechos resevrados.
+              </a>
+            </div>
+            <div style="align-items: center;">
+              <a href="" style="font-weight: bold; color: #fa7a3d; font-size: 0.875rem; text-decoration: none; transition: color 0.3s ease; margin: 16px 8px 0 8px; padding: 8px 16px; display: block; text-align: center;">
+                Aviso de Privacidad
+              </a>
+            </div>
+            <div style="font-weight: bold; color: #d9d9d9; font-size: 0.875rem; margin-right: 20px;  margin-top: 20px;">
+                Contactanos! raulejemplo@gmail.com
+            </div>
+        </div>
     </footer>
 
     <script>
