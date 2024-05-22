@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'Cute Love';
-    src: url('../Fonts/CuteLove.otf') format('opentype'); /* Asegúrate de que la ruta sea correcta */
+    font-family: 'Cute Love', cursive;
+    src: url('../Fonts/CuteLove.ttf') format('opentype'); /* Asegúrate de que la ruta sea correcta */
 }
 
 body {
