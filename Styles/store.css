@@ -23,7 +23,7 @@ img {
 }
 
 .header {
-    background-color: #602749;
+    background-color: #585558;
     display: flex;
     align-items: center;
     min-height: 70vh;
@@ -130,13 +130,19 @@ td {
 .header-txt h1 {
     font-size: 55px;
     line-height: 1;
-    color: #333128;
+    color: #ffffff;
     margin-bottom: 25px;
+}
+
+h5 {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 45px;
 }
 
 p {
     font-size: 16px;
-    color: #181713;
+    color: #000000;
     margin-bottom: 45px;
 }
 
