@@ -11,28 +11,28 @@ function showForm(location, map) {
         formularioAbierto = true;
 
         // Crear el formulario HTML    
-        var form = '<form id="petForm" style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">' +
-            '<div style="margin-bottom: 10px;">' +
+        var form = '<form id="petForm" style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ccc; border-radius: 5px; display: flex; flex-direction: column; gap: 10px;">' +
+            '<div>' +
             '<label for="name" style="display: block; font-weight: bold;">Nombre:</label>' +
             '<input type="text" id="name" name="name" value="Bobby" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">' +
             '</div>' +
-            '<div style="margin-bottom: 10px;">' +
+            '<div>' +
             '<label for="description" style="display: block; font-weight: bold;">Descripción:</label>' +
             '<textarea id="description" name="description" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">Perro amigable y juguetón</textarea>' +
             '</div>' +
-            '<div style="margin-bottom: 10px;">' +
+            '<div>' +
             '<label for="color" style="display: block; font-weight: bold;">Color:</label>' +
             '<input type="text" id="color" name="color" value="Marrón" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">' +
             '</div>' +
-            '<div style="margin-bottom: 10px;">' +
+            '<div>' +
             '<label for="gender" style="display: block; font-weight: bold;">Género:</label>' +
             '<input type="text" id="gender" name="gender" value="M" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">' +
             '</div>' +
-            '<div style="margin-bottom: 10px;">' +
+            '<div>' +
             '<label for="address" style="display: block; font-weight: bold;">Dirección:</label>' +
             '<input type="text" id="address" name="address" value="Calle Principal, 123" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">' +
             '</div>' +
-            '<div style="margin-bottom: 10px;">' +
+            '<div>' +
             '<label for="image" style="display: block; font-weight: bold;">Imagen:</label>' +
             '<input type="file" id="fileInput" name="fileInput" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">' +
             '</div>' +
@@ -40,6 +40,7 @@ function showForm(location, map) {
             '<input type="hidden" id="longitude" name="longitude" value="' + location.lng() + '">' +
             '<button type="button" id="agregarBtn" onclick="submitForm()" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 3px; cursor: pointer;">Agregar</button>' +
             '</form>';
+
 
         // Mostrar el formulario en un InfoWindow en la posición del clic derecho
         var infowindow = new google.maps.InfoWindow({
