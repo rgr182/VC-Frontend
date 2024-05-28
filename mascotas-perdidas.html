@@ -1,11 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mascotas Perdidas</title>
+    <title>Asociación de Rescate de Perritos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./Styles/Style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./Scripts/main.js"></script>
 </head>
 <body>
-    
+    <header class="custom-header">
+        <div>
+            <h1>De Vuelta a Casa</h1>
+            <p>Una aplicación para ayudar a encontrar a lomitos extraviados</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="searchContainer">
+            <input type="text" id="searchInput" placeholder="Buscar por nombre o descripción...">
+        </div>
+        <div class="btn-group" role="group" aria-label="Filtrar mascotas">
+            <a href="mascotas-perdidas.html" class="btn btn-info">Mascotas Perdidas</a>
+            <a href="mascotas-reportadas.html" class="btn btn-info">Mascotas Reportadas</a>
+        </div>
+
+        <h2>Catálogo de Mascotas Perdidas</h2>
+        <div id="petCatalog" class="row"></div>
+    </div>
+
+    <footer>
+        <h2>Derechos Reservados VC 2024</h2>
+    </footer>
 </body>
 </html>
