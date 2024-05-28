@@ -63,3 +63,14 @@ footer {
     bottom: 0;
     width: 100%;
 }
+.list_inside {
+    list-style-type: none;
+    width: 100%;
+    text-align: left;
+    overflow: hidden;
+}
+   
+/* Ocultar el menú inicialmente */
+#menu {
+    display: none;
+}
