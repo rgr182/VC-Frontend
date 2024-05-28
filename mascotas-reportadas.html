@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Mascotas Perdidas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href= "Styles/mascotas-reportadas.css">
+</head>
+
+<body>
+    <header class="custom-header">
+        <div>
+            <h1>De Vuelta a Casa</h1>
+            <p>Una aplicación para ayudar a encontrar a lomitos extraviados</p>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        <div id="searchContainer" class="mb-4">
+            <input type="text" id="searchInput" class="form-control" placeholder="Buscar por nombre o descripción...">
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <select id="filterType" class="form-control">
+                    <option value="">Filtrar por tipo</option>
+                    <option value="Perro">Perro</option>
+                    <option value="Gato">Gato</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            <div class="col-md-4 mb-4">
+                <select id="filterLocation" class="form-control">
+                    <option value="">Filtrar por ubicación</option>
+                    <option value="Ciudad1">Ciudad1</option>
+                    <option value="Ciudad2">Ciudad2</option>
+                    <option value="Ciudad3">Ciudad3</option>
+                </select>
+            </div>
+            <div class="col-md-4 mb-4">
+                <button id="filterButton" class="btn btn-primary btn-block">Aplicar Filtros</button>
+            </div>
+        </div>
+
+        <h2>Catálogo de Mascotas Reportadas</h2>
+        <div id="petCatalog" class="row">
+            <!-- Ejemplos generados al azar -->
+            <div class="pet-item col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Mascota 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Fido</h5>
+                        <p class="card-text"><strong>Tipo:</strong> Perro</p>
+                        <p class="card-text"><strong>Descripción:</strong> Perro marrón, tamaño mediano.</p>
+                        <p class="card-text"><strong>Última Ubicación:</strong> Ciudad1</p>
+                        <p class="card-text"><strong>Contacto:</strong> 123-456-7890</p>
+                    </div>
+                </div>
+            </div>
+            <div class="pet-item col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Mascota 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Miau</h5>
+                        <p class="card-text"><strong>Tipo:</strong> Gato</p>
+                        <p class="card-text"><strong>Descripción:</strong> Gato blanco, ojos verdes.</p>
+                        <p class="card-text"><strong>Última Ubicación:</strong> Ciudad2</p>
+                        <p class="card-text"><strong>Contacto:</strong> 987-654-3210</p>
+                    </div>
+                </div>
+            </div>
+            <div class="pet-item col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Mascota 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Rex</h5>
+                        <p class="card-text"><strong>Tipo:</strong> Perro</p>
+                        <p class="card-text"><strong>Descripción:</strong> Perro negro, tamaño grande.</p>
+                        <p class="card-text"><strong>Última Ubicación:</strong> Ciudad3</p>
+                        <p class="card-text"><strong>Contacto:</strong> 555-555-5555</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center mt-4">
+        <h2>Derechos Reservados VC 2024</h2>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
