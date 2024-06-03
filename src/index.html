@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asociación de Rescate de Perritos</title>
+    <title>De Vuelta a Casa</title>
     <!-- Enlaces a las bibliotecas de Google Maps API -->
     <!-- Incluir jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -12,12 +12,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkx8ZPwcFziyPqjMNb247_Qm4ckd8KW7g&callback=initMap"
         async defer></script>
-    <script src="/Scripts/geolocation.js"></script>
-    <script src="/Scripts/initMap.js"></script>
-    <script src="/Scripts/form.js"></script>
-    <script src="/Scripts/markers.js"></script>
-    <script src="/Scripts/main.js"></script>
+    <script src="../Scripts/geolocation.js"></script>
+    <script src="../Scripts/initMap.js"></script>
+    <script src="../Scripts/form.js"></script>
+    <script src="../Scripts/markers.js"></script>
+    <script src="../Scripts/main.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Styles/Style.css">
+    <link rel="stylesheet" href="../Styles/Modal.css">
+    <link rel="stylesheet" href="../Styles/footer.css">
+    
+
     <link rel="stylesheet" href="/Styles/Style.css">
     <link rel="stylesheet" href="/Styles/Modal.css">
     <style>
@@ -42,10 +47,9 @@
         <div
             style="display: flex; align-items: center; height: 20px; padding: 16px; padding-left: 32px; padding-right: 64px; justify-content: space-between;">
             <div style="display: flex; align-items: center;">
-                <button style="background-color: transparent; border: none;">
-                    <a class="logo" href="index.html"><img src="/images/LogoDVA.png" alt="#"
-                            style="width: 70px; height: 70px;" /></a>
-                </button>
+              <button style="background-color: transparent; border: none;">
+                <a class="logo" href="index.html"><img src="images/LogoDVA.png" alt="#" style="width: 70px; height: 70px;"/></a>
+              </button>
             </div>
             <h1>De Vuelta a Casa</h1>
 
@@ -60,10 +64,8 @@
             <div>
                 <ul class="navbar-nav">
                     <li class="nav-item" style="display: inline-flex; justify-content: space-between;">
-                        <a class="nav-link active" aria-current="page" href="#"
-                            style="color: black; margin-right: 100px; font-size: 1.5rem;">Iniciar Sesión</a>
-                        <a class="nav-link active" aria-current="page" href="#"
-                            style="color: black; margin-right: 50px; font-size: 1.5rem;">Registrarse</a>
+                      <a class="nav-link active" aria-current="page" href="#" style="color: black; margin-right: 100px; font-size: 1.5rem;">Iniciar Sesión</a>
+                      <a class="nav-link active" aria-current="page" href="#" style="color: black; margin-right: 50px; font-size: 1.5rem;">Registrarse</a>
                     </li>
                 </ul>
             </div>
@@ -176,21 +178,46 @@
     <footer>
         <div style="background-color: black; display: flex; justify-content: space-between;">
             <div style="display: flex; margin-top: 20px;">
-                <a style="font-weight: bold; color: #d9d9d9; font-size: 0.875rem; margin-left: 20px;">
-                    De Vuelta a Casa. Todos los derechos resevrados.
-                </a>
+              <a style="font-weight: bold; color: #d9d9d9; font-size: 0.875rem; margin-left: 20px;">
+                De Vuelta a Casa. Todos los derechos resevrados.
+              </a>
             </div>
             <div style="align-items: center;">
-                <a href=""
-                    style="font-weight: bold; color: #fa7a3d; font-size: 0.875rem; text-decoration: none; transition: color 0.3s ease; margin: 16px 8px 0 8px; padding: 8px 16px; display: block; text-align: center;">
-                    Aviso de Privacidad
-                </a>
+              <a href="" style="font-weight: bold; color: #fa7a3d; font-size: 0.875rem; text-decoration: none; transition: color 0.3s ease; margin: 16px 8px 0 8px; padding: 8px 16px; display: block; text-align: center;">
+                Aviso de Privacidad
+              </a>
             </div>
-            <div style="font-weight: bold; color: #d9d9d9; font-size: 0.875rem; margin-right: 20px;  margin-top: 20px;">
-                Contactanos! raulejemplo@gmail.com
+  
+            <div class="links-group">
+              <span>Compañia</span>
+              <div>
+                <a href="#">Quiénes somos</a>
+                <a href="#">Nuestro equipo</a>
+                <a href="#">Contacto</a>
+              </div>
             </div>
+          </div>
+          <!-- Social Media -->
+          <div class="social-media">
+            <a href="#">
+              <img src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/icon-facebook.svg" alt="Facebook Logo">
+            </a>
+            <a href="#">
+              <img src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/icon-twitter.svg" alt="Twitter Logo">
+            </a>
+            <a href="#">
+              <img src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/icon-pinterest.svg" alt="Pinterest Logo">
+            </a>
+            <a href="#">
+              <img src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/icon-instagram.svg" alt="Instagram Logo">
+            </a>
+          </div>
         </div>
-    </footer>
+        <!-- Made By -->
+        <div class="attribution">
+          Pet Finder 2024
+        </div>
+      </footer>
 
     <script>
         $(document).ready(function () {
