@@ -12,7 +12,7 @@ function showForm(location, map) {
 
         // Crear el formulario HTML    
         var form = '<form id="petForm" style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">' +
-            '<div style="margin-bottom: 10px;">' +
+        '<div style="margin-bottom: 10px;">' +
             '<label for="name" style="display: block; font-weight: bold;">Nombre:</label>' +
             '<input type="text" id="name" name="name" value="Bobby" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">' +
             '</div>' +
@@ -65,7 +65,6 @@ function showForm(location, map) {
         hideLoadingAnimation();
     });
 }
-
 
 // Función para enviar el formulario
 function submitForm() {
