@@ -22,7 +22,11 @@
     <link rel="stylesheet" href="../Styles/Modal.css">
     <link rel="stylesheet" href="../Styles/footer.css">
     
-
+    <style>
+        #listPet li {
+            margin-bottom: 10px; /* Espacio entre los elementos de la lista */
+        }
+    </style>
 </head>
 
 <body>
@@ -65,7 +69,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img id="modalImage" src="imagen.jpg" alt="Imagen del Perrito">
+                    <img id="modalImage" src="#" alt="Imagen del Perrito">
                     <!-- Asegúrate de proporcionar una imagen válida -->
                     <p id="modalName">Nombre de la Mascota</p> <!-- Campo de nombre -->
                     <p id="modalDescription">Descripción de la Mascota</p> <!-- Campo de descripción -->
@@ -80,7 +84,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <!-- Cambio: Agregar la clase modal-lg para hacer el modal más grande -->
             <div class="modal-content">
-                <div class="modal-header"style="background-color: #F59607;>
+                <div class="modal-header"style="background-color: #F59607;">
                     <h5 class="modal-title" id="exampleModalLabel">Selecciona una opción</h5>
                 </div>
                 <div class="modal-body">
@@ -140,21 +144,22 @@
         </div>      
 
         <div class="container">
-            <h2>Mapa de Perritos Extraviados</h2>
-            <h2 style="text-align: end;">Reportes Recientes</h2>        
-        </div>
-            <!-- Div para mostrar el mapa --> 
+            <h2 style="text-align: start;">Reportes Recientes</h2> 
+            <div style="background-color: #ffffff; border-radius: 8px 8px 0 0; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 4px; margin-top: 20px;">
+                <ul id="listPet" style="font-size: 1.125rem; font-weight: bold; margin-bottom: 8px;"></ul>
+            </div>
 
-            <div id="reportes" style="display: flex; justify-content: space-between;">
-                <div id="mapContainer" style="flex: 1;">
+        </div>
+
+
+
+        <div class="container" style="margin-top: 20px;">
+            <h2>Mapa de Perritos Extraviados</h2>       
+                <div id="mapContainer">
                     <div id="map"></div>  
                 </div>
-                <div id="rep" style="background-color: #f6b756; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 4px;">
-                    <h2 style="font-size: 1.125rem; font-weight: bold; margin-bottom: 8px;">Conexión con Back</h2>
-                    <h2 style="font-size: 1.125rem; font-weight: bold; margin-bottom: 8px;">Reportes recientes de back :)</h2>
-                </div>
             </div>  
-    </div>                     
+    </div>                       
 
     <footer class="footer" id="resources">
         <div class="container">
@@ -172,7 +177,7 @@
                 <a href="#">Preguntas frecuentes</a>
               </div>
             </div>
-  
+ 
             <div class="links-group">
               <span>Compañia</span>
               <div>
@@ -185,21 +190,21 @@
           <!-- Social Media -->
           <div class="social-media">
             <a href="#">
-              <img src="/images/icon-facebook.svg" alt="Facebook Logo">
+              <img src="../images/icon-facebook.svg" alt="Facebook Logo">
             </a>
             <a href="#">
-              <img src="/images/icon-twitter.svg" alt="Twitter Logo">
+              <img src="../images/icon-twitter.svg" alt="Twitter Logo">
             </a>
             <a href="#">
-              <img src="/images/icon-pinterest.svg" alt="Pinterest Logo">
+              <img src="../images/icon-pinterest.svg" alt="Pinterest Logo">
             </a>
             <a href="#">
-              <img src="/images/icon-instagram.svg" alt="Instagram Logo">
+              <img src="../images/icon-instagram.svg" alt="Instagram Logo">
             </a>
           </div>
         </div>
         <div class="attribution">
-          Pet Finder 2024
+          De Vuelta a Casa 2024
         </div>
       </footer>
 
@@ -221,6 +226,28 @@
                 localStorage.setItem('userChoice', 'reportar');
                 $('#ChoiseModal').modal('hide'); // Oculta el modal
             });
+
+            // Función para cargar y mostrar las mascotas
+            function loadPets() {
+                $.ajax({
+                    url: 'https://localhost:7200/Pets',
+                    method: 'GET',
+                    success: function(data) {
+                        var listPet = $('#listPet');
+                        listPet.empty();
+                        data.forEach(function(pet) {
+                            var listItem = $('<li></li>').text('Nombre: '+ pet.name + ', Descripcion: ' + pet.description + ', Color: ' + pet.color + ', Genero: ' + pet.gender + ', Direccion: ' + pet.address);
+                            listPet.append(listItem);
+                        });
+                    },
+                    error: function() {
+                        alert('Error al cargar los datos de las mascotas.');
+                    }
+                });
+            }
+
+            // Llamar a la función para cargar las mascotas al cargar la página
+            loadPets();
         });
     </script>
 
