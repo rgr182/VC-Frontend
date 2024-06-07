@@ -9,6 +9,7 @@ body {
     margin: 0;
     padding: 0;
     text-size-adjust: 150%;
+    color: #35323E;
 }
 
 /* Estilos para el encabezado */
@@ -22,37 +23,23 @@ body {
 .custom-header h1 {
     font-size: 2.5rem;
     margin-top: 10px;
-    color: black;
 }
 
 .container {
     width: 1200px;
-    margin: 20px auto;
-    padding: 0 20px;
+    margin-top: 20px;
+    padding: 0 0px;
 
 }
 
 #mapContainer {
     height: 90vh;
     margin-bottom: 20px;
-    width: 110vh;
 }
 
 #map {
     height: 100%;
     width: 100%;
-}
-
-#reportes {
-    width: 100%;
-    display: inline-flex;
-    justify-content: space-between;
-}
-
-#rep{
-    width: 20%;
-    height: 50%;
-    margin-right: 60px;
 }
 
 #searchContainer {
