@@ -137,29 +137,32 @@
         </div>
     
         <!-- Agregar el botón para filtrar mascotas perdidas -->
+    </div>
+
+    <!-- Agregar el botón para filtrar mascotas perdidas -->
+    <div class="container">
+        <div class="btn-group" role="group" aria-label="Filtrar mascotas">
+            <button type="button" class="btn btn-warning" id="lostBtn" style="background-color: #f4a52c;">Mascotas Perdidas</button>
+            <button type="button" class="btn btn-warning" id="reportedBtn" style="background-color: #f4a52c;">Mascotas Reportadas</button>
+        </div>      
+
         <div class="container">
-            <div class="btn-group" role="group" aria-label="Filtrar mascotas">
-                <button type="button" class="btn btn-warning" id="lostBtn" style="background-color: #f4a52c;">Mascotas Perdidas</button>
-                <button type="button" class="btn btn-warning" id="reportedBtn" style="background-color: #f4a52c;">Mascotas Reportadas</button>
-            </div>      
-    
-            <div class="container">
-                <h2 style="text-align: start;">Reportes Recientes</h2> 
-                <div style="background-color: #ffffff; border-radius: 8px 8px 0 0; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 4px; margin-top: 20px;">
-                    <ul id="listPet" style="font-size: 1.125rem; font-weight: bold; margin-bottom: 8px;"></ul>
-                </div>
-    
+            <h2 class="listaReportes" style="text-align: start;">Reportes Recientes</h2> 
+            <div style="background-color: #ffffff; border-radius: 0 0 10px 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 4px; ">
+                <ul id="listPet" style="font-size: 1.125rem; font-weight: bold; margin-bottom: 8px;"></ul>
             </div>
 
+        </div>
 
 
-            <div class="container" style="margin-top: 20px;">
-                <h2>Mapa de Perritos Extraviados</h2>       
-                    <div id="mapContainer">
-                        <div id="map"></div>  
-                    </div>
-                </div>  
-        </div>                       
+
+        <div class="container" style="margin-top: 20px;">
+            <h2>Mapa de Perritos Extraviados</h2>       
+                <div id="mapContainer">
+                    <div id="map"></div>  
+                </div>
+            </div>  
+    </div>                       
     
         <footer class="footer" id="resources">
             <div class="container">
