@@ -87,6 +87,7 @@
   object-fit: cover;
 }
 
+<<<<<<< HEAD
 .accordion-button {
   background-color: #3E1C33;
   color: #fff;
@@ -116,6 +117,9 @@
 
 
 /* Dark Mode CSS Rulse set*/
+=======
+/* WIP */
+>>>>>>> ResidentesITD
 .dark-mode {
   background-color: #333;
   color: #fff;

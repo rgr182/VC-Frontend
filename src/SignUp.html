@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Styles/index.css">
+    <title>Regístrate</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Regístrate</h1>
+        <form class="form" id="registerForm">
+            <div>
+                <h2><label for="name">Nombre(s)</label></h2>
+                <input type="text" id="name" placeholder="Nombre" required>
+            </div>
+            <div>
+                <h2><label for="surname">Apellidos</label></h2>
+                <input type="text" id="surname" placeholder="Apellidos" required>
+            </div>
+            <div>
+                <h2><label for="email">Correo electrónico</label></h2>
+                <input type="email" id="email" placeholder="Correo" required>
+            </div>
+            <div>
+                <h2><label for="password">Contraseña</label></h2>
+                <input type="password" id="password" placeholder="Contraseña" required>
+            </div>
+            <div>
+                <h2><label for="phone">Número de teléfono</label></h2>
+                <input type="tel" id="phone" placeholder="Teléfono" required>
+            </div>
+            <div>
+                <h2><label for="address">Domicilio</label></h2>
+                <input type="text" id="address" placeholder="Domicilio" required>
+            </div>
+            <div>
+                <button type="submit" class="btnlogin">Regístrate</button>
+                <p class="account">¿Ya tienes cuenta? <span><a class="register" href="../src/LogIn.html">Inicia sesión</a></span></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const surname = document.getElementById('surname').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+
+            const user = {
+                Name: name,
+                Surname: surname,
+                Email: email,
+                PhoneNumber: phone,
+                Password: password,
+                AddressLine1: address
+            };
+
+            try {
+                const response = await fetch('https://localhost:7200/api/Users/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    alert(result.message);
+                    window.location.href = '/src/LogIn.html';
+                } else {
+                    const errorData = await response.json();
+                    alert(`Error: ${errorData.message}`);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Ocurrió un error al registrar el usuario.');
+            }
+        });
+    </script>
+</body>
+
+</html>
