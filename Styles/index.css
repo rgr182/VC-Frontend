@@ -1,7 +1,7 @@
 /*LogIn*/
 body {
-  background-color: #F5A52C;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ECECEE;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,49 +9,112 @@ body {
   margin: 0;
   color: #191919;
 }
+.description{
+  font-weight: 400;
+  margin-top: -15px;
+  margin-bottom: 25px;
+}
 
 .container {
-  background-color: #F7F7F7;
+  display: flex;
+  background-color: #FFFFFF;
   font-size: smaller;
-  display: block;
   text-align: center;
-  border: 2px transparent black;
-  border-radius: 30px;
-  box-shadow: 5px 5px 25px rgb(61, 61, 61);
-  padding: 20px 40px;
+  border-radius: 25px;
+  box-shadow: 15px 15px 30px -15px rgb(61, 61, 61);
+  height: 600px;
+  width: 800px;
+  padding: 40px 60px;
+  align-items: center;
+  /* Centra el contenido verticalmente */
+  justify-content: center;
+  /* Centra el contenido horizontalmente */
+}
+
+.leftImage {
+  width: 50%;
+  padding-right: 40px;
+}
+
+.formulario {
+  width: 50%;
+  padding-left: 40px;
+}
+
+
+.buttons{
+  display: flex;
+  justify-content: space-around;
 }
 
 .btnlogin {
-  font-size: large;
+  font-size: 15px;
   font-weight: bold;
   margin-top: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 5px 20px;
   border: transparent;
-  background: #F5A52C;
+  background: #365486;
   color: #f2f2f2;
-  height: 30px;
+  height: 40px;
+  width: 100%;
+
+  &:hover {
+    background: #0F1035;
+  }
 }
 
-.btnlogin:hover {
-  background: #f59607;
+.btnSignUp {
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 5px 20px;
+  border: transparent;
+  background: #365486;
+  color: #f2f2f2;
+  height: 40px;
+  width: 100%;
+
+  &:hover {
+    background: #0F1035;
+  }
 }
+
+#backButton{
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 10px;
+  border-radius: 10px;
+  height: 40px;
+  width: 40px;
+  color: #365486;
+  border-color: transparent;
+  background-color: #e0e0e0;
+  margin-right: 10px;
+  
+  &:hover {
+    background: #61616169;
+  }
+}
+
+
 
 .password {
   text-align: right;
-  font-size: small;
+  font-size:medium;
   font-weight: bold;
   width: auto;
 }
 
 .register {
-  color: #F5A52C;
+  color: #365486;
   font-weight: bold;
-}
+  text-decoration: none;
 
-.register:hover {
-  color: #f59607;
-  font-weight: bold;
+  &:hover {
+    color: #0F1035;
+  }
 }
 
 .account {
@@ -59,6 +122,7 @@ body {
 }
 
 h1 {
+  text-align: left;
   font-size: xx-large;
 }
 
@@ -66,16 +130,17 @@ h2 {
   position: relative;
   margin-bottom: 5px;
   text-align: left;
+  font-size: large;
 
 }
 
 input {
+  background-color: #F5F5F7;
   width: calc(100% - 24px);
-  height: 26px;
-  border-radius: 30px;
+  height: 30px;
+  border-radius: 10px;
   padding: 5px 10px;
   border-color: transparent;
-  box-shadow: 0 0px 50px rgba(212, 224, 251, 0.9);
   font-size: medium;
 }
 
