@@ -52,13 +52,13 @@ body {
   border-radius: 10px;
   padding: 5px 20px;
   border: transparent;
-  background: #365486;
+  background: #4c73ab;
   color: #f2f2f2;
   height: 40px;
   width: 100%;
 
   &:hover {
-    background: #0F1035;
+    background: #365486;
   }
 }
 
@@ -69,13 +69,13 @@ body {
   border-radius: 10px;
   padding: 5px 20px;
   border: transparent;
-  background: #365486;
+  background: #4c73ab;
   color: #f2f2f2;
   height: 40px;
   width: 100%;
 
   &:hover {
-    background: #0F1035;
+    background: #365486;
   }
 }
 
@@ -86,23 +86,23 @@ body {
   border-radius: 10px;
   height: 40px;
   width: 40px;
-  color: #365486;
+  color: #304974;
   border-color: transparent;
-  background-color: #e0e0e0;
+  background-color: #ececec;
   margin-right: 10px;
 
   &:hover {
-    background: #61616169;
+    background: #dcdcdc;
   }
 }
 
 .register {
-  color: #365486;
+  color: #4c73ab;
   font-weight: bold;
   text-decoration: none;
 
   &:hover {
-    color: #0F1035;
+    color: #365486;
   }
 }
 

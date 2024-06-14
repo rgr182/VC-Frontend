@@ -1,0 +1,82 @@
+body {
+    background-color: #F6F1F1;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-size-adjust: 150%;
+    color: #35323E;
+    line-height:normal;
+}
+
+.contenedor {
+    display: grid;
+    grid-template-columns: 18% 63% 18%; /* Proporciones de las columnas */
+    width: 84%;
+    margin: auto;
+    height: auto;
+}
+
+.filtro, .reportes {
+
+    padding: 10px;
+}
+
+.filtro {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.filtro a {
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.btn {
+    background-color: #ffffff;
+    margin-top: 10px;
+}
+
+.mapGroup {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Asegura que ocupe el ancho completo de la columna */
+    height: 80vh;
+    padding: 10px 40px;
+}
+
+.mapGroup h2 {
+    font-weight: bold;
+    font-size: x-large;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+
+
+.listaReportes {
+    background-color: #365486;
+    color: #F6F1F1;
+    padding: 10px;
+    border-radius: 18px 18px 0 0;
+    margin: 0;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+#listPet {
+    background-color: #ffffff;
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 4px;
+    font-size: 1.125rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+}

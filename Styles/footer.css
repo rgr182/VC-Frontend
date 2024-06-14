@@ -1,6 +1,9 @@
 .footer {
-    padding-top: 50px;
-    background: #232127;
+  /*position:fixed;*/ /* Add this line */
+  bottom: 0; /* Position footer at the bottom */
+  width: 100%; /* Ensure footer spans the entire width */
+  padding-top: 50px;
+  background: #232127;
   }
   
   .footer .container {
@@ -83,3 +86,7 @@
     filter: invert(0%) sepia(59%) saturate(6585%) hue-rotate(125deg)
       brightness(86%) contrast(85%);
   }
+
+
+
+  
