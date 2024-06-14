@@ -63,13 +63,15 @@ function showForm(location, map) {
             '<label for="description" style="display: block; font-weight: bold;">Descripción:</label>' +
             '<textarea id="description" name="description" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">Perro amigable y juguetón</textarea>' +
             '</div>' +
-            '<div style="margin-bottom: 10px;">' +
+            '<div style="display: grid; grid-template-columns: 0.5fr 0.5fr; gap: 10px; margin-bottom: 10px;">' +
+            '<div>' +
             '<label for="color" style="display: block; font-weight: bold;">Color:</label>' +
             '<input type="text" id="color" name="color" value="Marrón" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">' +
             '</div>' +
-            '<div style="margin-bottom: 10px;">' +
+            '<div>' +
             '<label for="gender" style="display: block; font-weight: bold;">Género:</label>' +
             '<input type="text" id="gender" name="gender" value="M" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">' +
+            '</div>' +
             '</div>' +
             '<div style="margin-bottom: 10px;">' +
             '<label for="address" style="display: block; font-weight: bold;">Dirección:</label>' +
@@ -85,13 +87,13 @@ function showForm(location, map) {
             '</div>' +
             '<input type="hidden" id="latitude" name="latitude" value="' + location.lat() + '">' +
             '<input type="hidden" id="longitude" name="longitude" value="' + location.lng() + '">' +
-            '<button type="button" id="agregarBtn" onclick="submitForm()" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 3px; cursor: pointer;">Agregar</button>' +
+            '<button type="button" id="agregarBtn" onclick="submitForm()" style="background-color: #4c73ab; color: white; padding: 10px 20px; border: none; border-radius: 3px; cursor: pointer;">Agregar</button>' +
             '</form>';
 
-// Función para enviar el formulario
-function submitForm() {
-    addPet();
-}
+        // Función para enviar el formulario
+        function submitForm() {
+            addPet();
+        }
 
         var infowindow = new google.maps.InfoWindow({
             content: form

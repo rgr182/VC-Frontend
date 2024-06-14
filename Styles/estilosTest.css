@@ -80,3 +80,34 @@ body {
     font-weight: 400;
     margin-bottom: 8px;
 }
+
+.report{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding:10px 10px;
+
+    border-bottom: 1px solid rgb(165, 165, 165);;
+    margin: 5px 0px ;
+
+}
+
+.detalles{
+    display:grid;
+    font-size: medium;
+    font-weight: 500;
+    
+}
+
+.reportImage{
+    width: 70px;
+    height: 70px;
+    border-radius: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+
+
+
+}
