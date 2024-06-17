@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De Vuelta a Casa - Reporta</title>
+    <!-- Enlaces a las bibliotecas de Google Maps API -->
+    <!-- Incluir jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkx8ZPwcFziyPqjMNb247_Qm4ckd8KW7g&callback=initMap"
+        async defer></script>
+    <script src="../Scripts/geolocation.js"></script>
+    <script src="../Scripts/initMap.js"></script>
+    <script src="../Scripts/form.js"></script>
+    <script src="../Scripts/markers.js"></script>
+    <script src="../Scripts/main.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Styles/estilos2.css">
+    <link rel="stylesheet" href="../Styles/Style.css">
+    <link rel="stylesheet" href="../Styles/header.css">
+    <link rel="stylesheet" href="../Styles/Modal.css">
+    <link rel="stylesheet" href="../Styles/footer.css">
+    <script src="https://kit.fontawesome.com/405c537c09.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Header-->
+
+    <header class="header">
+        <div class="logo">
+            <img src="/images/LogoDVA.png" alt="logo">
+            <a>Pet Finder</a>
+        </div>
+        <div class="search">
+            <input type="text" name="search" id="search" placeholder="Buscar">
+            <a class="user">
+                <button class="btnUser">
+                    <i class="fa-solid fa-user fa-xl" style="color:#4e4e4e"></i>
+                </button>
+            </a>
+        </div>
+    </header>
+
+    <!-- Modal 1-->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalle del la mascota</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" src="#" alt="Imagen del Perrito">
+                    <p id="modalName">Nombre de la Mascota</p> <!-- Campo de nombre -->
+                    <p id="modalDescription">Descripción de la Mascota</p> <!-- Campo de descripción -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="ChoiseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header"style="background-color: #365486;">
+                    <h5 class="modal-title" id="exampleModalLabel">Selecciona una opción</h5>
+                </div>
+                <div class="modal-body">
+                    <p>¿Qué deseas hacer?</p>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-primary" id="searchBtn" style="background-color: #4c73ab;">Estoy buscando..</button>
+                        
+                        
+                        <ul class="list_show" id="menu">
+                            <li class="list_inside">
+                                <a href="#" class="nav_link nav_link--inside">Nombre</a>
+                                <input type="text" id="Nombre" name="Nombre"><br>
+                            </li>
+                            <li class="list_inside">
+                                <a href="#" class="nav_link nav_link--inside">Descripción</a>
+                                <input type="text" id="Descripción" name="Descripción"><br>
+                            </li>
+                            <li class="list_inside">
+                                <a href="#" class="nav_link nav_link--inside">Color</a>
+                                <input type="text" id="Color" name="Color"><br>
+                            </li>
+                            <li class="list_inside">
+                                <a href="#" class="nav_link nav_link--inside">Género</a>
+                                <input type="text" id="Género" name="Género"><br>
+                            </li>
+                            <li class="list_inside">
+                                <a href="#" class="nav_link nav_link--inside">Domicilio</a>
+                                <input type="text" id="Domicilio" name="Domicilio"><br>
+                            </li>
+                            <li class="list_inside">
+                                <a href="#" class="nav_link nav_link--inside">Latitud</a>
+                                <input type="text" id="Latitud" name="Latitud"><br>
+                            </li>
+                            <li class="list_inside">
+                                <a href="#" class="nav_link nav_link--inside">Longitud</a>
+                                <input type="text" id="Longitud" name="Longitud"><br>
+                            </li>
+                            <li class="list_inside">
+                                <a href="#" class="nav_link nav_link--inside">Imagen</a>
+                                <input type="text" id="Imagen" name="Imagen"><br>
+                            </li>
+                        </ul>
+                        <button type="button" class="btn btn-secondary" id="reportBtn">Quiero reportar un lomito
+                            extraviado</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Filtro mascotas perdidas/mascotas reportadas -->
+    <!-- Agregar el botón para filtrar mascotas perdidas -->
+    <div class="contenedor">
+
+        <div class="filtro">
+            <a>Filtro de mascotas</a>
+            <button type="button" class="btn">Perdidas</button>
+            <button type="button" class="btn">Reportadas</button>
+        </div>
+
+        <!-- Contenedor mapa -->
+        <div class="mapGroup">
+            <h2>Mapa de perritos extraviados</h2>
+            <div id="map"></div>
+        </div>
+
+        <!-- Reportes recientes -->
+        <div class="reportes">
+            <h2 class="listaReportes">Reportes recientes</h2>
+            <ul id="listPet"> <!-- Espacio en blanco -->
+                <!-- Aquí se agregan los reportes-->
+            </ul>
+        </div>
+
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="resources">
+        <div class="container">
+            <!-- Website Logo -->
+            <div class="logo">
+                <a href="../src/index2.html">
+                    <img src="../images/LogoDVA.png" alt="" style="width:100px; height:100px;" />
+                </a>
+            </div>
+            <!-- Quick Links -->
+            <div class="quick-links">
+                <div class="links-group">
+                    <span>Ayuda</span>
+                    <div>
+                        <a href="#">Preguntas frecuentes</a>
+                    </div>
+                </div>
+
+                <div class="links-group">
+                    <span>Compañia</span>
+                    <div>
+                        <a href="#">Quiénes somos</a>
+                        <a href="#">Nuestro equipo</a>
+                        <a href="#">Contacto</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Social Media -->
+            <div class="social-media">
+                <a href="#">
+                    <img src="../images/icon-facebook.svg" alt="Facebook Logo">
+                </a>
+                <a href="#">
+                    <img src="../images/icon-twitter.svg" alt="Twitter Logo">
+                </a>
+                <a href="#">
+                    <img src="../images/icon-pinterest.svg" alt="Pinterest Logo">
+                </a>
+                <a href="#">
+                    <img src="../images/icon-instagram.svg" alt="Instagram Logo">
+                </a>
+            </div>
+        </div>
+        <div class="attribution">
+            De Vuelta a Casa 2024
+        </div>
+    </footer>
+
+
+    <script>
+        $(document).ready(function () {
+            // Mostrar el modal al cargar la página
+            $('#ChoiseModal').modal('show');
+
+            // Evento al hacer clic en "Estoy buscando"
+            $('#searchBtn').click(function () {
+                // Acción cuando el usuario selecciona "Estoy buscando"
+                localStorage.setItem('userChoice', 'buscando');
+                $('#ChoiseModal').modal('hide'); // Oculta el modal
+            });
+
+            // Evento al hacer clic en "Quiero reportar un lomito extraviado"
+            $('#reportBtn').click(function () {
+                // Acción cuando el usuario selecciona "Quiero reportar un lomito extraviado"
+                localStorage.setItem('userChoice', 'reportar');
+                $('#ChoiseModal').modal('hide'); // Oculta el modal
+            });
+
+
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+        const apiURL = 'https://localhost:7200/Pets';
+        const maxReports = 5; // Número máximo de reportes a mostrar
+
+        // Función para obtener los datos de la API
+        async function fetchReports() {
+            try {
+                const response = await fetch(apiURL);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                const data = await response.json();
+                updateReportList(data);
+            } catch (error) {
+                console.error('Error fetching the reports:', error);
+            }
+        }
+
+        // Función para actualizar la lista de reportes
+        function updateReportList(reports) {
+            const listPet = document.getElementById('listPet');
+            listPet.innerHTML = ''; // Limpia la lista antes de agregar los nuevos reportes
+
+            // Ordena los reportes por fecha en orden descendente
+            reports.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
+
+            // Tomar y mostrar reportes de manera descendente
+            const recentReports = reports.slice(0, maxReports);
+
+            recentReports.forEach(report => {
+                const reportElement = document.createElement('div');
+                reportElement.classList.add('report');
+
+                const detallesElement = document.createElement('div');
+                detallesElement.classList.add('detalles');
+
+                const nombreElement = document.createElement('a');
+                nombreElement.innerHTML = `<span style="font-weight: bold;">Nombre: </span>${report.name}`;
+                detallesElement.appendChild(nombreElement);
+
+                const colorElement = document.createElement('a');
+                colorElement.innerHTML = `<span style="font-weight: bold;">Color: </span>${report.color}`;
+                detallesElement.appendChild(colorElement);
+
+                const generoElement = document.createElement('a');
+                generoElement.innerHTML = `<span style="font-weight: bold;">Género: </span>${report.gender}`;
+                detallesElement.appendChild(generoElement);
+
+                const imgElement = document.createElement('img');
+                imgElement.src = report.imageURL;
+                imgElement.classList.add('reportImage');
+
+                reportElement.appendChild(detallesElement);
+                reportElement.appendChild(imgElement);
+
+                listPet.appendChild(reportElement);
+            });
+        }
+
+        // Obtiene y muestra los reportes
+        fetchReports();
+    });
+    </script>
+
+</body>
+
+</html>

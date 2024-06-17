@@ -36,10 +36,6 @@ function initMap() {
                             statusId: perrito.statusId
                         });
 
-                        debugger;
-                        // Agregar el marcador al array de marcadores
-                        markers.push(marker);
-
                         // Agregar evento de clic izquierdo para mostrar detalle del marcador
                         marker.addListener('click', function() {
                             $('#modalImage').attr('src', perrito.imageURL); // Asigna la URL de la imagen al modal

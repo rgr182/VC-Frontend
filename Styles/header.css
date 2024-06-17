@@ -1,0 +1,71 @@
+/* Inician estilos para el header */
+.header {
+    background-color: #FFFFFF;
+    display: flex;
+    padding: 20px;
+    text-align: center;
+    justify-content:space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 10%;
+    border-radius: 5px;
+    align-content: space-between;  
+    margin: 20px 150px 40px 150px;
+    height: fit-content;
+    padding:10px 50px; 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12);
+}
+
+.logo{
+    align-items: center;
+    display: flex;
+}
+
+.logo a{
+    font-weight: 700;
+    font-size: x-large;
+    padding-left: 8px;
+}
+
+.header a{
+    color: #101010;
+}
+
+.header .logo{
+    cursor: pointer;
+}
+.header .logo img {
+   height: 70px;
+   width: auto;
+}
+
+.btnUser{
+    
+    background-color: transparent;
+    border-radius: 999px;
+    border-width: 0px;
+    width: 50px;
+    height: 50px;
+
+    &:hover{
+        background-color: #E9E9F0;
+    }
+}
+
+
+.search{
+    padding: 5px;
+}
+
+.search input{
+    width: 70%;
+    height: 40px;
+    padding: 0 20px;
+    font-size: 18px;
+    color: #101010;
+    outline: none;
+    border: 1px solid silver;
+    border-radius: 30px;
+}
+
+/* Terminan para el header */
