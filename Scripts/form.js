@@ -78,10 +78,6 @@ function showForm(location, map) {
             '<input type="text" id="address" name="address" value="Calle Principal, 123" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">' +
             '</div>' +
             '<div style="margin-bottom: 10px;">' +
-            '<label for="petId" style="display: block; font-weight: bold;">Pet ID:</label>' +
-            '<input type="text" id="petId" name="petId" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">' +
-            '</div>' +
-            '<div style="margin-bottom: 10px;">' +
             '<label for="fileInput" style="display: block; font-weight: bold;">Imagen:</label>' +
             '<input type="file" id="fileInput" name="fileInput" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">' +
             '</div>' +

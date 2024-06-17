@@ -18,7 +18,8 @@
     <script src="../Scripts/markers.js"></script>
     <script src="../Scripts/main.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../Styles/estilosTest.css">
+    <link rel="stylesheet" href="../Styles/estilos2.css">
+    <link rel="stylesheet" href="../Styles/Style.css">
     <link rel="stylesheet" href="../Styles/header.css">
     <link rel="stylesheet" href="../Styles/Modal.css">
     <link rel="stylesheet" href="../Styles/footer.css">
@@ -62,18 +63,18 @@
         </div>
     </div>
 
-    <!-- Modal2 MODAL FASTIDIOSO QUE SALE AL CARGAR LA PÁGINA
+
     <div class="modal fade" id="ChoiseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
         data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
-                <div class="modal-header"style="background-color: #F59607;">
+                <div class="modal-header"style="background-color: #365486;">
                     <h5 class="modal-title" id="exampleModalLabel">Selecciona una opción</h5>
                 </div>
                 <div class="modal-body">
                     <p>¿Qué deseas hacer?</p>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-primary" id="searchBtn" style="background-color: #F59607;">Estoy buscando..</button>
+                        <button type="button" class="btn btn-primary" id="searchBtn" style="background-color: #4c73ab;">Estoy buscando..</button>
                         
                         
                         <ul class="list_show" id="menu">
@@ -117,7 +118,7 @@
             </div>
         </div>
     </div>
--->
+
 
 
 
@@ -141,38 +142,11 @@
         <!-- Reportes recientes -->
         <div class="reportes">
             <h2 class="listaReportes">Reportes recientes</h2>
-            <ul id="listPet"> <!-- Recuadro blanco -->
-                <div class="report">
-
-                    <div class="detalles">
-                        <a><span style="font-weight: bold;">Nombre: </span>Firulais</a>
-                        <a><span style="font-weight: bold;">Color: </span>Gris</a>
-                        <a><span style="font-weight: bold;">Género: </span>Macho</a>
-                    </div>
-
-                    <div>
-                        <img src="/images/perro.jpg" class="reportImage">
-                    </div>
-
-                </div>
-                <div class="report">
-
-                    <div class="detalles">
-                        <a><span style="font-weight: bold;">Nombre: </span>Pelusa</a>
-                        <a><span style="font-weight: bold;">Color: </span>Blanco</a>
-                        <a><span style="font-weight: bold;">Género: </span>Hembra</a>
-                    </div>
-
-                    <div>
-                        <img src="/images/perro.jpg" class="reportImage">
-                    </div>
-
-                </div>
-                
-
-               
+            <ul id="listPet"> <!-- Espacio en blanco -->
+                <!-- Aquí se agregan los reportes-->
             </ul>
         </div>
+
 
     </div>
 
@@ -224,7 +198,7 @@
         </div>
     </footer>
 
-    <!-- QUITAR EL COMENTARIO, ESTO ES LA CONEXIÓN A BACK
+
     <script>
         $(document).ready(function () {
             // Mostrar el modal al cargar la página
@@ -244,29 +218,72 @@
                 $('#ChoiseModal').modal('hide'); // Oculta el modal
             });
 
-            // Función para cargar y mostrar las mascotas
-            function loadPets() {
-                $.ajax({
-                    url: 'https://localhost:7200/Pets',
-                    method: 'GET',
-                    success: function(data) {
-                        var listPet = $('#listPet');
-                        listPet.empty();
-                        data.forEach(function(pet) {
-                            var listItem = $('<li></li>').text('Nombre: '+ pet.name + ', Descripcion: ' + pet.description + ', Color: ' + pet.color + ', Genero: ' + pet.gender + ', Direccion: ' + pet.address);
-                            listPet.append(listItem);
-                        });
-                    },
-                    error: function() {
-                        alert('Error al cargar los datos de las mascotas.');
-                    }
-                });
-            }
 
-            // Llamar a la función para cargar las mascotas al cargar la página
-            loadPets();
         });
-    </script>-->
+
+        document.addEventListener("DOMContentLoaded", function() {
+        const apiURL = 'https://localhost:7200/Pets';
+        const maxReports = 5; // Número máximo de reportes a mostrar
+
+        // Función para obtener los datos de la API
+        async function fetchReports() {
+            try {
+                const response = await fetch(apiURL);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                const data = await response.json();
+                updateReportList(data);
+            } catch (error) {
+                console.error('Error fetching the reports:', error);
+            }
+        }
+
+        // Función para actualizar la lista de reportes
+        function updateReportList(reports) {
+            const listPet = document.getElementById('listPet');
+            listPet.innerHTML = ''; // Limpia la lista antes de agregar los nuevos reportes
+
+            // Ordena los reportes por fecha en orden descendente
+            reports.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
+
+            // Tomar y mostrar reportes de manera descendente
+            const recentReports = reports.slice(0, maxReports);
+
+            recentReports.forEach(report => {
+                const reportElement = document.createElement('div');
+                reportElement.classList.add('report');
+
+                const detallesElement = document.createElement('div');
+                detallesElement.classList.add('detalles');
+
+                const nombreElement = document.createElement('a');
+                nombreElement.innerHTML = `<span style="font-weight: bold;">Nombre: </span>${report.name}`;
+                detallesElement.appendChild(nombreElement);
+
+                const colorElement = document.createElement('a');
+                colorElement.innerHTML = `<span style="font-weight: bold;">Color: </span>${report.color}`;
+                detallesElement.appendChild(colorElement);
+
+                const generoElement = document.createElement('a');
+                generoElement.innerHTML = `<span style="font-weight: bold;">Género: </span>${report.gender}`;
+                detallesElement.appendChild(generoElement);
+
+                const imgElement = document.createElement('img');
+                imgElement.src = report.imageURL;
+                imgElement.classList.add('reportImage');
+
+                reportElement.appendChild(detallesElement);
+                reportElement.appendChild(imgElement);
+
+                listPet.appendChild(reportElement);
+            });
+        }
+
+        // Obtiene y muestra los reportes
+        fetchReports();
+    });
+    </script>
 
 </body>
 

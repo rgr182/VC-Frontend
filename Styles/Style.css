@@ -1,20 +1,17 @@
-@font-face {
-    font-family: 'Cute Love', cursive;
-    src: url('../Fonts/CuteLove.ttf') format('opentype'); /* Asegúrate de que la ruta sea correcta */
-}
 
-body {
+/*
     background-color: rgba(233, 240, 234, 0.927);
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
     padding: 0;
     text-size-adjust: 150%;
     color: #35323E;
-}
+}*/
 
 /* Estilos para el encabezado */
+
 .custom-header {
-    background-color: #F59607;
+    background-color: #365486;
     padding: 20px;
     text-align: center;
     max-width: 100%; /* Ajusta el ancho del encabezado al 100% */
@@ -65,6 +62,7 @@ body {
     font-size: 18px;
 } 
 
+
 /* Estilos para el pie de página */
 .list_inside {
     list-style-type: none;
@@ -79,9 +77,7 @@ body {
 }
 
 
-.listaReportes{
-    background-color: #F59607;
-    padding: 10px;
-    border-radius: 10px 10px 0 0;
-    margin: 0px;
+#reportBtn{
+    background-color: #cdd8ea;
+    color:#35323E;
 }
