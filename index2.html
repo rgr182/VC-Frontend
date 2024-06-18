@@ -200,90 +200,70 @@
 
 
     <script>
-        $(document).ready(function () {
-            // Mostrar el modal al cargar la página
-            $('#ChoiseModal').modal('show');
-
-            // Evento al hacer clic en "Estoy buscando"
-            $('#searchBtn').click(function () {
-                // Acción cuando el usuario selecciona "Estoy buscando"
-                localStorage.setItem('userChoice', 'buscando');
-                $('#ChoiseModal').modal('hide'); // Oculta el modal
-            });
-
-            // Evento al hacer clic en "Quiero reportar un lomito extraviado"
-            $('#reportBtn').click(function () {
-                // Acción cuando el usuario selecciona "Quiero reportar un lomito extraviado"
-                localStorage.setItem('userChoice', 'reportar');
-                $('#ChoiseModal').modal('hide'); // Oculta el modal
-            });
-
-
-        });
-
         document.addEventListener("DOMContentLoaded", function() {
-        const apiURL = 'https://localhost:7200/Pets';
-        const maxReports = 5; // Número máximo de reportes a mostrar
+    const apiURL = 'https://localhost:7200/Pets';
+    const maxReports = 3; // Número máximo de reportes a mostrar
 
-        // Función para obtener los datos de la API
-        async function fetchReports() {
-            try {
-                const response = await fetch(apiURL);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                const data = await response.json();
-                updateReportList(data);
-            } catch (error) {
-                console.error('Error fetching the reports:', error);
+    // Función para obtener los datos de la API
+    async function fetchReports() {
+        try {
+            const response = await fetch(apiURL);
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
             }
+            const data = await response.json();
+            updateReportList(data);
+        } catch (error) {
+            console.error('Error fetching the reports:', error);
         }
+    }
 
-        // Función para actualizar la lista de reportes
-        function updateReportList(reports) {
-            const listPet = document.getElementById('listPet');
-            listPet.innerHTML = ''; // Limpia la lista antes de agregar los nuevos reportes
+    // Función para actualizar la lista de reportes
+    function updateReportList(reports) {
+        const listPet = document.getElementById('listPet');
+        listPet.innerHTML = ''; // Limpia la lista antes de agregar los nuevos reportes
 
-            // Ordena los reportes por fecha en orden descendente
-            reports.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
+        // Ordena los reportes por fecha en orden descendente
+        reports.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
 
-            // Tomar y mostrar reportes de manera descendente
-            const recentReports = reports.slice(0, maxReports);
+        // Tomar y mostrar reportes de manera descendente
+        const recentReports = reports.slice(0, maxReports);
 
-            recentReports.forEach(report => {
-                const reportElement = document.createElement('div');
-                reportElement.classList.add('report');
+        recentReports.forEach(report => {
+            const reportElement = document.createElement('div');
+            reportElement.classList.add('report');
 
-                const detallesElement = document.createElement('div');
-                detallesElement.classList.add('detalles');
+            const detallesElement = document.createElement('div');
+            detallesElement.classList.add('detalles');
 
-                const nombreElement = document.createElement('a');
-                nombreElement.innerHTML = `<span style="font-weight: bold;">Nombre: </span>${report.name}`;
-                detallesElement.appendChild(nombreElement);
+            const nombreElement = document.createElement('a');
+            nombreElement.innerHTML = `<span style="font-weight: bold;">Nombre: </span>${report.name}`;
+            detallesElement.appendChild(nombreElement);
 
-                const colorElement = document.createElement('a');
-                colorElement.innerHTML = `<span style="font-weight: bold;">Color: </span>${report.color}`;
-                detallesElement.appendChild(colorElement);
+            const colorElement = document.createElement('a');
+            colorElement.innerHTML = `<span style="font-weight: bold;">Color: </span>${report.color}`;
+            detallesElement.appendChild(colorElement);
 
-                const generoElement = document.createElement('a');
-                generoElement.innerHTML = `<span style="font-weight: bold;">Género: </span>${report.gender}`;
-                detallesElement.appendChild(generoElement);
+            const generoElement = document.createElement('a');
+            generoElement.innerHTML = `<span style="font-weight: bold;">Género: </span>${report.gender}`;
+            detallesElement.appendChild(generoElement);
 
-                const imgElement = document.createElement('img');
-                imgElement.src = report.imageURL;
-                imgElement.classList.add('reportImage');
+            const imgElement = document.createElement('img');
+            imgElement.src = report.imageURL;
+            imgElement.classList.add('reportImage');
 
-                reportElement.appendChild(detallesElement);
-                reportElement.appendChild(imgElement);
+            reportElement.appendChild(detallesElement);
+            reportElement.appendChild(imgElement);
 
-                listPet.appendChild(reportElement);
-            });
-        }
+            listPet.appendChild(reportElement);
+        });
+    }
 
-        // Obtiene y muestra los reportes
-        fetchReports();
-    });
+    // Obtiene y muestra los reportes
+    fetchReports();
+});
     </script>
+    
 
 </body>
 
