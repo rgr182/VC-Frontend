@@ -5,19 +5,20 @@ body {
     padding: 0;
     text-size-adjust: 150%;
     color: #35323E;
-    line-height:normal;
+    line-height: normal;
 }
 
 .contenedor {
     display: grid;
-    grid-template-columns: 18% 63% 18%; /* Proporciones de las columnas */
+    grid-template-columns: 18% 63% 18%;
     width: 84%;
     margin: auto;
     height: auto;
+    gap: 20px;
 }
 
-.filtro, .reportes {
-
+.filtro,
+.reportes {
     padding: 10px;
 }
 
@@ -38,11 +39,10 @@ body {
 }
 
 .mapGroup {
-    
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%; /* Asegura que ocupe el ancho completo de la columna */
+    width: 100%;
     height: 80vh;
     padding: 10px 40px;
 }
@@ -59,8 +59,6 @@ body {
     margin-bottom: 20px;
 }
 
-
-
 .listaReportes {
     background-color: #365486;
     color: #F6F1F1;
@@ -69,6 +67,7 @@ body {
     margin: 0;
     font-weight: bold;
     font-size: x-large;
+    height: auto;
 }
 
 #listPet {
@@ -79,27 +78,28 @@ body {
     font-size: 1.125rem;
     font-weight: 400;
     margin-bottom: 8px;
+    overflow-x: hidden;
+    word-wrap: break-word;
 }
 
-.report{
+.report {
     display: flex;
     align-items: center;
-    justify-content:space-between;
-    padding:10px 10px;
-
-    border-bottom: 1px solid rgb(165, 165, 165);;
-    margin: 5px 0px ;
-
+    justify-content: space-between;
+    padding: 10px 10px;
+    border-bottom: 1px solid rgb(165, 165, 165);
+    margin: 5px 0px;
+    flex-wrap: wrap;
 }
 
-.detalles{
-    display:grid;
+.detalles {
+    display: grid;
     font-size: medium;
     font-weight: 500;
-    
+    word-wrap: break-word;
 }
 
-.reportImage{
+.reportImage {
     width: 70px;
     height: 70px;
     border-radius: 20%;
@@ -107,7 +107,45 @@ body {
     align-items: center;
     justify-content: center;
     object-fit: cover;
+}
 
+@media (max-width: 768px) {
+    .contenedor {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 
+    .filtro,
+    .mapGroup,
+    .reportes {
+        width: 100%;
+    }
 
+    .mapGroup {
+        height: 50vh;
+        padding: 10px 20px;
+    }
+
+    .report {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .reportImage {
+        width: 70px;
+        height: 70px;
+        border-radius: 20%;
+        object-fit: cover;
+        margin-left: 10px;
+    }
+
+    .detalles {
+        flex-grow: 1;
+        margin-right: 10px;
+    }
+
+    .listaReportes {
+        font-size: medium;
+    }
 }

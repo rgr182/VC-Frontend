@@ -1,34 +1,4 @@
-
-/*
-    background-color: rgba(233, 240, 234, 0.927);
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    margin: 0;
-    padding: 0;
-    text-size-adjust: 150%;
-    color: #35323E;
-}*/
-
 /* Estilos para el encabezado */
-
-.custom-header {
-    background-color: #365486;
-    padding: 20px;
-    text-align: center;
-    max-width: 100%; /* Ajusta el ancho del encabezado al 100% */
-}
-
-.custom-header h1 {
-    font-size: 2.5rem;
-    margin-top: 10px;
-}
-
-.container {
-    width: 1200px;
-    margin: 20px auto;
-    padding: 0 0px;
-
-}
-
 #mapContainer {
     height: 90vh;
     margin-bottom: 20px;
@@ -46,7 +16,7 @@
     justify-content: space-between;
 }
 
-#rep{
+#rep {
     width: 20%;
     height: 50%;
     margin-left: 20px;
@@ -60,7 +30,7 @@
     width: 100%;
     padding: 10px;
     font-size: 18px;
-} 
+}
 
 
 /* Estilos para el pie de página */
@@ -70,14 +40,14 @@
     text-align: left;
     overflow: hidden;
 }
-   
+
 /* Ocultar el menú inicialmente */
 #menu {
     display: none;
 }
 
 
-#reportBtn{
+#reportBtn {
     background-color: #cdd8ea;
-    color:#35323E;
+    color: #35323E;
 }
