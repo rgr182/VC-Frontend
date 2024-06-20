@@ -196,8 +196,8 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const apiURL = 'https://localhost:7200/Pets';
-            const maxReports = 3; // Número máximo de reportes a mostrar
-
+            const maxReports = 3; // Número máximo de reportes que se muestran
+    
             // Función para obtener los datos de la API
             async function fetchReports() {
                 try {
@@ -209,54 +209,73 @@
                     updateReportList(data);
                 } catch (error) {
                     console.error('Error fetching the reports:', error);
+                    showNoReportsMessage('No se pudo establecer conexión con el servidor.');
                 }
             }
-
+    
             // Función para actualizar la lista de reportes
             function updateReportList(reports) {
                 const listPet = document.getElementById('listPet');
                 listPet.innerHTML = ''; // Limpia la lista antes de agregar los nuevos reportes
-
+    
+                if (reports.length === 0) {
+                    showNoReportsMessage('No hay reportes recientes.');
+                    return;
+                }
+    
                 // Ordena los reportes por fecha en orden descendente
                 reports.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
-
+    
                 // Tomar y mostrar reportes de manera descendente
                 const recentReports = reports.slice(0, maxReports);
-
+    
                 recentReports.forEach(report => {
                     const reportElement = document.createElement('div');
                     reportElement.classList.add('report');
-
+    
                     const detallesElement = document.createElement('div');
                     detallesElement.classList.add('detalles');
-
+    
                     const nombreElement = document.createElement('a');
                     nombreElement.innerHTML = `<span style="font-weight: bold;">Nombre: </span>${report.name}`;
                     detallesElement.appendChild(nombreElement);
-
+    
                     const colorElement = document.createElement('a');
                     colorElement.innerHTML = `<span style="font-weight: bold;">Color: </span>${report.color}`;
                     detallesElement.appendChild(colorElement);
-
+    
                     const generoElement = document.createElement('a');
                     generoElement.innerHTML = `<span style="font-weight: bold;">Género: </span>${report.gender}`;
                     detallesElement.appendChild(generoElement);
-
+    
                     const imgElement = document.createElement('img');
                     imgElement.src = report.imageURL;
                     imgElement.classList.add('reportImage');
-
+    
                     reportElement.appendChild(detallesElement);
                     reportElement.appendChild(imgElement);
-
+    
                     listPet.appendChild(reportElement);
                 });
             }
-
+    
+            // Función para mostrar el mensaje de no hay reportes
+            function showNoReportsMessage(message) {
+                const listPet = document.getElementById('listPet');
+                listPet.innerHTML = ''; // Limpia la lista antes de agregar el mensaje
+    
+                const noReportsElement = document.createElement('div');
+                noReportsElement.classList.add('no-reports');
+                noReportsElement.innerText = message;
+    
+                listPet.appendChild(noReportsElement);
+            }
+    
             // Obtiene y muestra los reportes
             fetchReports();
         });
     </script>
+    
 </body>
 
 </html>
