@@ -1,45 +1,25 @@
-@font-face {
-    font-family: 'Cute Love', cursive;
-    src: url('../Fonts/CuteLove.ttf') format('opentype'); /* Asegúrate de que la ruta sea correcta */
-}
-
-body {
-    background-color: rgba(255, 255, 255, 0.927);
-    font-family: 'Cute Love', cursive;
-    margin: 0;
-    padding: 0;
-    text-size-adjust: 150%;
-    color: #35323E;
-}
-
 /* Estilos para el encabezado */
-.custom-header {
-    background-color: #fa7a4a;
-    padding: 20px;
-    text-align: center;
-    max-width: 100%; /* Ajusta el ancho del encabezado al 100% */
-}
-
-.custom-header h1 {
-    font-size: 2.5rem;
-    margin-top: 10px;
-}
-
-.container {
-    width: 1200px;
-    margin-top: 20px;
-    padding: 0 0px;
-
-}
-
 #mapContainer {
     height: 90vh;
     margin-bottom: 20px;
+    width: 110vh;
 }
 
 #map {
     height: 100%;
     width: 100%;
+}
+
+#reportes {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+#rep {
+    width: 20%;
+    height: 50%;
+    margin-left: 20px;
 }
 
 #searchContainer {
@@ -50,7 +30,8 @@ body {
     width: 100%;
     padding: 10px;
     font-size: 18px;
-} 
+}
+
 
 /* Estilos para el pie de página */
 .list_inside {
@@ -59,16 +40,14 @@ body {
     text-align: left;
     overflow: hidden;
 }
-   
+
 /* Ocultar el menú inicialmente */
 #menu {
     display: none;
 }
 
 
-.listaReportes{
-    background-color: #F59607;
-    padding: 10px;
-    border-radius: 10px 10px 0 0;
-    margin: 0px;
+#reportBtn {
+    background-color: #cdd8ea;
+    color: #35323E;
 }

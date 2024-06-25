@@ -4,46 +4,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Styles/index.css">
+    <link rel="stylesheet" href="../Styles/SignUp.css">
     <title>Regístrate</title>
+    <script src="https://kit.fontawesome.com/405c537c09.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="container">
-        <h1>Regístrate</h1>
-        <form class="form" id="registerForm">
-            <div>
-                <h2><label for="name">Nombre(s)</label></h2>
-                <input type="text" id="name" placeholder="Nombre" required>
+        <div class="leftImage">
+            <img class="logo" src="/images/LogoDVA.png">
+        </div>
+        <form class="formulario" id="registerForm">
+            <div id="step1">
+                <h1>Crea una cuenta</h1>
+                <h2 class="description">Proporciona tu información básica.</h2>
+                <div>
+                    <h2><label for="name">Nombre(s)</label></h2>
+                    <input type="text" id="name" placeholder="Nombre" required>
+                </div>
+                <div>
+                    <h2><label for="surname">Apellidos</label></h2>
+                    <input type="text" id="surname" placeholder="Apellidos" required>
+                </div>
+                <div>
+                    <h2><label for="phone">Número de teléfono</label></h2>
+                    <input type="tel" id="phone" placeholder="Teléfono" required>
+                </div>
+                <div>
+                    <h2><label for="address">Domicilio</label></h2>
+                    <input type="text" id="address" placeholder="Domicilio" required>
+                </div>
+                <button type="button" id="nextButton" class="btnNext">Siguiente</button>
             </div>
-            <div>
-                <h2><label for="surname">Apellidos</label></h2>
-                <input type="text" id="surname" placeholder="Apellidos" required>
+
+            <div id="step2" style="display: none;">
+                <h1>Crea una cuenta</h1>
+                <h2 class="description">Introduce tu información de acceso.</h2>
+                <div>
+                    <h2><label for="email">Email</label></h2>
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+                <div>
+                    <h2><label for="password">Contraseña</label></h2>
+                    <input type="password" id="password" placeholder="Contraseña" required>
+                </div>
+                <div class="buttons">
+                    <button type="button" id="backButton"><i class="fa-solid fa-angle-left"></i></button>
+                    <button type="submit" class="btnSignUp ">Regístrate</button>
+                </div>
             </div>
-            <div>
-                <h2><label for="email">Correo electrónico</label></h2>
-                <input type="email" id="email" placeholder="Correo" required>
-            </div>
-            <div>
-                <h2><label for="password">Contraseña</label></h2>
-                <input type="password" id="password" placeholder="Contraseña" required>
-            </div>
-            <div>
-                <h2><label for="phone">Número de teléfono</label></h2>
-                <input type="tel" id="phone" placeholder="Teléfono" required>
-            </div>
-            <div>
-                <h2><label for="address">Domicilio</label></h2>
-                <input type="text" id="address" placeholder="Domicilio" required>
-            </div>
-            <div>
-                <button type="submit" class="btnlogin">Regístrate</button>
-                <p class="account">¿Ya tienes cuenta? <span><a class="register" href="../src/LogIn.html">Inicia sesión</a></span></p>
-            </div>
+            <p class="account">¿Ya tienes cuenta? <span><a class="register" href="/src/LogIn.html">Inicia
+                        sesión</a></span></p>
+
         </form>
     </div>
 
     <script>
+        const nextButton = document.getElementById('nextButton');
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+
+        function allStep1FieldsFilled() {
+            const name = document.getElementById('name').value.trim();
+            const surname = document.getElementById('surname').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const address = document.getElementById('address').value.trim();
+
+            return name !== '' && surname !== '' && phone !== '' && address !== '';
+        }
+
+        nextButton.disabled = !allStep1FieldsFilled();
+        const inputs = step1.querySelectorAll('input[required]');
+
+        inputs.forEach(input => {
+            input.addEventListener('keyup', () => {
+                nextButton.disabled = !allStep1FieldsFilled();
+            });
+        });
+
+        nextButton.addEventListener('click', function () {
+            step1.style.display = 'none';
+            step2.style.display = 'block';
+        });
+        const backButton = document.getElementById('backButton');
+
+        backButton.addEventListener('click', function () {
+            step2.style.display = 'none';
+            step1.style.display = 'block';
+        });
+
         document.getElementById('registerForm').addEventListener('submit', async function (event) {
             event.preventDefault();
 

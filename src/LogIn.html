@@ -4,28 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Styles/index.css">
+    <link rel="stylesheet" href="../Styles/LogIn.css">
     <title>Iniciar Sesión</title>
 </head>
 
 <body>
+
     <div class="container">
-        <h1>Inicia Sesión</h1>
-        <form class="form" id="loginForm">
-            <div>
-                <h2><label for="email">Correo electrónico</label></h2>
-                <input type="email" id="email" placeholder="Correo electrónico">
-            </div>
-            <div>
-                <h2><label for="password">Contraseña</label></h2>
-                <input type="password" id="password" placeholder="Contraseña">
-                <p class="password" style="text-align: center;">¿Has olvidado tu contraseña?</p>
-            </div>
-            <div>
-                <a href="../src/index.html"><button type="submit" class="btnlogin">Iniciar sesión</button></a>
-                <p class="account">¿Aún no tienes cuenta? <a class="register" href="../src/SignUp.html">Regístrate</a></p>
-            </div>
-        </form>
+
+        <div class="leftImage">
+            <img class="logo" src="/images/LogoDVA.png">
+        </div>
+
+
+        <div class="formulario">
+            <h1>Inicia sesión</h1>
+            <h2 class="description">Por favor, ingresa tu información.</h2>
+            <form class="form" id="loginForm">
+                <div>
+                    <h2><label for="email">Email</label></h2>
+                    <input type="email" id="email" placeholder="Email">
+                </div>
+                <div>
+                    <h2><label for="password">Contraseña</label></h2>
+                    <input type="password" id="password" placeholder="Contraseña">
+                    <p class="password">¿Olvidaste la contraseña?</p>
+                </div>
+                <div>
+                    <button type="submit" class="btnlogin">Iniciar sesión</button>
+                    <p class="account">¿Aún no tienes cuenta? <a class="register" href="/src/SignUp.html">Regístrate</a>
+                    </p>
+                </div>
+            </form>
+        </div>
     </div>
     </div>
 
@@ -54,7 +65,7 @@
                     const data = await response.json();
                     // Hacer algo con la respuesta del servidor, como redirigir a otra página
                     alert('Inicio de sesión exitoso');
-                    window.location.href = '/src/index.html';
+                    window.location.href = '/index.html';
                 } else {
                     // Si la respuesta no es OK, mostrar un mensaje de error
                     alert('Error al iniciar sesión. Verifica tus credenciales.');
