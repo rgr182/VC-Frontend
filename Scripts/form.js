@@ -4,7 +4,7 @@ var currentInfoWindow = null; // Variable global para controlar la ventana de in
 var map; // Variable global para el mapa
 var markers = []; // Array global para almacenar los marcadores
 
-// Función para agregar un nuevo marcador a la base de datos
+// Agrega un nuevo marcador en memoria (sin backend)
 function addPet() {
     var petData = {
         name: $('#name').val(),
@@ -16,33 +16,23 @@ function addPet() {
         longitude: parseFloat($('#longitude').val()),
         createDate: new Date().toISOString(),
         status: localStorage.getItem('userChoice') === 'buscando' ? 0 : 1,
+        imageURL: './images/perro.jpg'
     };
 
-    $.ajax({
-        url: 'https://localhost:7200/Pets',
-        method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(petData),
-        success: function (response) {
-            console.log('Mascota agregada exitosamente');
-            var marker = new google.maps.Marker({
-                position: { lat: petData.latitude, lng: petData.longitude },
-                map: map,
-                title: petData.name,
-                description: petData.description,
-            });
-            marker.addListener('click', function () {
-                $('#modalImage').attr('src', petData.imageURL);
-                $('#modalName').text(petData.name);
-                $('#modalDescription').text(petData.description);
-                $('#myModal').modal('show');
-            });
-            markers.push(marker);
-        },
-        error: function (xhr, status, error) {
-            console.error('Error al agregar mascota: ', error);
-        }
+    console.log('Mascota agregada exitosamente (local):', petData);
+    var marker = new google.maps.Marker({
+        position: { lat: petData.latitude, lng: petData.longitude },
+        map: map,
+        title: petData.name,
+        description: petData.description,
     });
+    marker.addListener('click', function () {
+        $('#modalImage').attr('src', petData.imageURL);
+        $('#modalName').text(petData.name);
+        $('#modalDescription').text(petData.description);
+        $('#myModal').modal('show');
+    });
+    markers.push(marker);
 }
 
 // Función para mostrar el formulario
@@ -54,14 +44,9 @@ function showForm(location, map) {
     showLoadingAnimation().then(function () {
         formularioAbierto = true;
 
-<<<<<<< HEAD
-        // Crear el formulario HTML    
+        // Crear el formulario HTML
         var form = '<form id="petForm" style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ccc; border-radius: 5px; display: flex; flex-direction: column; gap: 10px;">' +
             '<div>' +
-=======
-        var form = '<form id="petForm" style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">' +
-            '<div style="margin-bottom: 10px;">' +
->>>>>>> ResidentesITD
             '<label for="name" style="display: block; font-weight: bold;">Nombre:</label>' +
             '<input type="text" id="name" name="name" value="Bobby" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">' +
             '</div>' +
@@ -81,17 +66,12 @@ function showForm(location, map) {
             '<label for="address" style="display: block; font-weight: bold;">Dirección:</label>' +
             '<input type="text" id="address" name="address" value="Calle Principal, 123" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">' +
             '</div>' +
-<<<<<<< HEAD
             '<div>' +
-            '<label for="image" style="display: block; font-weight: bold;">Imagen:</label>' +
-=======
-            '<div style="margin-bottom: 10px;">' +
             '<label for="petId" style="display: block; font-weight: bold;">Pet ID:</label>' +
             '<input type="text" id="petId" name="petId" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">' +
             '</div>' +
-            '<div style="margin-bottom: 10px;">' +
+            '<div>' +
             '<label for="fileInput" style="display: block; font-weight: bold;">Imagen:</label>' +
->>>>>>> ResidentesITD
             '<input type="file" id="fileInput" name="fileInput" style="width: 100%; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">' +
             '</div>' +
             '<input type="hidden" id="latitude" name="latitude" value="' + location.lat() + '">' +
@@ -99,16 +79,8 @@ function showForm(location, map) {
             '<button type="button" id="agregarBtn" onclick="submitForm()" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 3px; cursor: pointer;">Agregar</button>' +
             '</form>';
 
-<<<<<<< HEAD
 
         // Mostrar el formulario en un InfoWindow en la posición del clic derecho
-=======
-// Función para enviar el formulario
-function submitForm() {
-    addPet();
-}
-
->>>>>>> ResidentesITD
         var infowindow = new google.maps.InfoWindow({
             content: form
         });

@@ -4,32 +4,26 @@ var currentInfoWindow = null; // Variable global para controlar la ventana de in
 var map; // Variable global para el mapa
 var markers = []; // Array global para almacenar los marcadores
 
-// Función para cargar una imagen al servidor
+// Stub local: no se sube al servidor, solo se genera una data URL para mostrar la imagen en el mapa
 function uploadImage(file, PetId) {
-    var formData = new FormData();
-    formData.append('file', file);
-    formData.append('PetId', PetId);
-
-    return $.ajax({
-        url: 'https://localhost:7200/api/Images/Upload',
-        method: 'POST',
-        processData: false,
-        contentType: false,
-        data: formData,
-        success: function (response) {
-            console.log('Imagen cargada exitosamente:', response);
-        },
-        error: function (xhr, status, error) {
-            console.error('Error al cargar la imagen:', error);
-            console.log('Detalles del error:', xhr.responseText);
+    return new Promise(function (resolve) {
+        if (!file) {
+            resolve({ url: null });
+            return;
         }
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            console.log('Imagen procesada localmente para PetId:', PetId);
+            resolve({ url: e.target.result });
+        };
+        reader.readAsDataURL(file);
     });
 }
 
-// Función para agregar un nuevo marcador a la base de datos
+// Agrega un nuevo marcador en memoria (sin backend)
 function addPet() {
     var PetId = parseInt($('#petId').val(), 10);
-    var fileInput = $('#fileInput')[0].files[0];
+    var fileInput = $('#fileInput')[0] ? $('#fileInput')[0].files[0] : null;
     var petData = {
         name: $('#name').val(),
         description: $('#description').val(),
@@ -42,43 +36,23 @@ function addPet() {
         status: localStorage.getItem('userChoice') === 'buscando' ? true : false,
     };
 
-    $.ajax({
-        url: 'https://localhost:7200/Pets',
-        method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(petData),
-        success: function (response) {
-            console.log('Mascota agregada exitosamente');
-            var marker = new google.maps.Marker({
-                position: { lat: petData.latitude, lng: petData.longitude },
-                map: map,
-                title: petData.name,
-                description: petData.description,
-            });
-            marker.addListener('click', function () {
-                $('#modalImage').attr('src', petData.imageURL);
-                $('#modalName').text(petData.name);
-                $('#modalDescription').text(petData.description);
-                $('#myModal').modal('show');
-            });
-            markers.push(marker);
+    uploadImage(fileInput, PetId).then(function (imgResult) {
+        petData.imageURL = imgResult.url || './images/perro.jpg';
 
-            // Subir la imagen
-            if (fileInput) {
-                uploadImage(fileInput, PetId)
-                    .done(function(response) {
-                        console.log('Imagen cargada exitosamente:', response);
-                    })
-                    .fail(function(xhr, status, error) {
-                        console.error('Error al cargar la imagen:', error);
-                        console.log('Detalles del error:', xhr.responseText);
-                    });
-            }
-        },
-        error: function (xhr, status, error) {
-            console.error('Error al agregar mascota:', error);
-            console.log('Detalles del error:', xhr.responseText);
-        }
+        console.log('Mascota agregada exitosamente (local):', petData);
+        var marker = new google.maps.Marker({
+            position: { lat: petData.latitude, lng: petData.longitude },
+            map: map,
+            title: petData.name,
+            description: petData.description,
+        });
+        marker.addListener('click', function () {
+            $('#modalImage').attr('src', petData.imageURL);
+            $('#modalName').text(petData.name);
+            $('#modalDescription').text(petData.description);
+            $('#myModal').modal('show');
+        });
+        markers.push(marker);
     });
 }
 

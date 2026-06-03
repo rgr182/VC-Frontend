@@ -230,22 +230,23 @@
                     $('#ChoiseModal').modal('hide'); // Oculta el modal
                 });
     
-                // Función para cargar y mostrar las mascotas
+                // Datos hardcodeados (sin backend)
+                var HARDCODED_PETS = [
+                    { name: 'Bobby', description: 'Perro mestizo, amigable y juguetón.', color: 'Marrón',         gender: 'M', address: 'Av. Reforma 123' },
+                    { name: 'Luna',  description: 'Hembra pequeña, collar rojo.',         color: 'Blanco y negro', gender: 'F', address: 'Calle Pino 45' },
+                    { name: 'Rocky', description: 'Macho grande, raza labrador.',         color: 'Dorado',         gender: 'M', address: 'Plaza Central' },
+                    { name: 'Maya',  description: 'Cachorra muy juguetona.',              color: 'Café claro',     gender: 'F', address: 'Calle Sauces 78' },
+                    { name: 'Toby',  description: 'Perro mediano, perdido hace días.',    color: 'Negro',          gender: 'M', address: 'Av. Insurgentes 200' },
+                    { name: 'Nala',  description: 'Reportada cerca de la escuela.',       color: 'Atigrado',       gender: 'F', address: 'Calle Magnolia 12' }
+                ];
+
+                // Función para mostrar las mascotas hardcodeadas
                 function loadPets() {
-                    $.ajax({
-                        url: 'https://localhost:7200/Pets',
-                        method: 'GET',
-                        success: function(data) {
-                            var listPet = $('#listPet');
-                            listPet.empty();
-                            data.forEach(function(pet) {
-                                var listItem = $('<li></li>').text('Nombre: '+ pet.name + ', Descripcion: ' + pet.description + ', Color: ' + pet.color + ', Genero: ' + pet.gender + ', Direccion: ' + pet.address);
-                                listPet.append(listItem);
-                            });
-                        },
-                        error: function() {
-                            alert('Error al cargar los datos de las mascotas.');
-                        }
+                    var listPet = $('#listPet');
+                    listPet.empty();
+                    HARDCODED_PETS.forEach(function(pet) {
+                        var listItem = $('<li></li>').text('Nombre: '+ pet.name + ', Descripcion: ' + pet.description + ', Color: ' + pet.color + ', Genero: ' + pet.gender + ', Direccion: ' + pet.address);
+                        listPet.append(listItem);
                     });
                 }
     

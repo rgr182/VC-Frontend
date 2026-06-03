@@ -4,28 +4,28 @@ var currentInfoWindow = null; // Variable global para la ventana de información
 var map; // Variable global para el mapa
 var markers = []; // Array global para almacenar los marcadores
 
-// Función para cargar una imagen al servidor
+// Stub local: genera una data URL en memoria en lugar de subir al servidor
 function uploadImage(file, petId) {
-    var formData = new FormData();
-    formData.append('file', file);
-    formData.append('petId', petId); // Añadir el petId al FormData
-
-    return $.ajax({
-        url: 'https://localhost:7079/api/Images/Upload',
-        method: 'POST',
-        processData: false,
-        contentType: false,
-        data: formData
+    return new Promise(function (resolve) {
+        if (!file) {
+            resolve({ url: null });
+            return;
+        }
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            console.log('Imagen procesada localmente para petId:', petId);
+            resolve({ url: e.target.result });
+        };
+        reader.readAsDataURL(file);
     });
 }
 
-// Función para agregar un nuevo marcador a la base de datos
+// Stub local: simula la creación de la mascota y devuelve un petId generado
 function addPet(petData) {
-    return $.ajax({
-        url: 'https://localhost:7200/Pets',
-        method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(petData)
+    return new Promise(function (resolve) {
+        var fakeId = Date.now();
+        console.log('Mascota agregada exitosamente (local):', petData, 'petId:', fakeId);
+        resolve({ petId: fakeId });
     });
 }
 
