@@ -1,4 +1,6 @@
 import Script from "next/script";
+import SiteNav from "@/components/SiteNav";
+import SiteFooter from "@/components/SiteFooter";
 
 const PRODUCTS = [
   "ACCESORIOSPERRO2.png",
@@ -33,191 +35,154 @@ const PRODUCTS = [
   "ropaperrito2.png",
 ];
 
-const OFFERS = [
-  "accesorios1.png",
-  "arnesgato1.png",
-  "arnesgato2.png",
-  "ACCESORIOSPERRO1.png",
+const INFO = [
+  { icon: "🛍️", title: "Compras", text: "Los mejores productos para tu mejor amigo." },
+  { icon: "💳", title: "Pago", text: "Realiza tu pago de forma segura." },
+  { icon: "🚚", title: "Envío", text: "A la puerta de tu casa." },
 ];
 
 export default function StorePage() {
   return (
     <>
-      <link rel="stylesheet" href="/Styles/store.css" />
+      <SiteNav />
 
-      <header className="header">
-        <div className="menu container">
-          <a href="#" className="logo">
-            logo
-          </a>
-          <input type="checkbox" id="menu" />
-          <label htmlFor="menu">
-            <img src="/img/menu.png" className="menu-icono" alt="menu" />
-          </label>
-          <nav className="navbar">
-            <ul>
-              <li>
-                <a className="nav-link" href="/">
-                  Inicio
-                </a>
-              </li>
-              <li>
-                <a href="/mapa" className="active-menu">
-                  Encuentra tu mascota
-                </a>
-              </li>
-              <li>
-                <a href="/store" className="enlace">
-                  Pet Store
-                </a>
-              </li>
-              <li>
-                <a href="#">Donaciones</a>
-              </li>
-            </ul>
-          </nav>
-          <div>
-            <ul>
-              <li className="submenu">
-                <img src="/img/car.svg" id="img-carrito" alt="carrito" />
-                <div id="carrito">
-                  <table id="lista-carrito">
-                    <thead>
-                      <tr>
-                        <th>Imagen</th>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody></tbody>
-                  </table>
-                  <a href="#" id="vaciar-carrito" className="btn-2">
-                    Vaciar Carrito
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="header-content container">
-          <div className="header-txt">
-            <span>Pet Store</span>
-            <h1>Productos online para tu mascota.</h1>
-            <h5>
+      {/* Hero + cart */}
+      <section className="border-b border-stone-200 bg-gradient-to-br from-brand-50 to-stone-50 dark:border-stone-800 dark:from-stone-900 dark:to-stone-950">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-4 py-14 sm:flex-row sm:justify-between sm:px-6">
+          <div className="max-w-lg text-center sm:text-left">
+            <span className="font-semibold text-brand-600 dark:text-brand-400">
+              Pet Store
+            </span>
+            <h1 className="mt-2 text-4xl font-extrabold leading-tight sm:text-5xl">
+              Productos online para tu mascota.
+            </h1>
+            <p className="mt-4 text-stone-600 dark:text-stone-400">
               Te ofrecemos una gran variedad de productos de calidad para
               consentir a tu peludito.
-            </h5>
-          </div>
-          <div className="header-img">
-            <img src="/img/Logo_volviendo_a_casa-removebg-preview.png" alt="" />
-          </div>
-        </div>
-      </header>
-
-      <section className="information container">
-        <div className="information-content">
-          <div className="information-1">
-            <img src="/img/i1.svg" alt="" />
-            <h3>Compras</h3>
-            <p>
-              Los mejores productos
-              <br />
-              tu mejor amigo.
             </p>
-          </div>
-          <div className="information-1">
-            <img src="/img/i2.svg" alt="" />
-            <h3>Pago</h3>
-            <p>Realiza tu pago de forma segura.</p>
-          </div>
-          <div className="information-1">
-            <img src="/img/i3.svg" alt="" />
-            <h3>Envio</h3>
-            <p>A la puerta de tu casa.</p>
-          </div>
-        </div>
-      </section>
 
-      <section className="oferts container">
-        {OFFERS.map((img, i) => (
-          <div className="ofert-1" key={i}>
-            <img src={`/img/${img}`} alt="" />
-            <h3>Oferta</h3>
-            <p>Premium</p>
-          </div>
-        ))}
-      </section>
-
-      <main className="products container" id="lista-1">
-        <h2>Productos destacados</h2>
-
-        <div className="product-content">
-          {PRODUCTS.map((img, i) => (
-            <div className="product" key={i}>
-              <img src={`/img/${img}`} alt="" />
-              <div className="product-txt">
-                <h3>Producto</h3>
-                <p className="precio">$15.00</p>
+            {/* Cart (toggles on hover; wired by /Scripts/store.js) */}
+            <div className="group relative mt-6 inline-block">
+              <button
+                id="img-carrito"
+                className="inline-flex items-center gap-2 rounded-full bg-brand-500 px-5 py-2.5 font-semibold text-white shadow-sm transition hover:bg-brand-600"
+              >
+                🛒 Mi carrito
+              </button>
+              <div
+                id="carrito"
+                className="invisible absolute left-0 z-20 mt-2 w-80 origin-top-left rounded-xl border border-stone-200 bg-white p-4 text-left opacity-0 shadow-xl transition-all group-hover:visible group-hover:opacity-100 dark:border-stone-700 dark:bg-stone-800"
+              >
+                <table id="lista-carrito" className="w-full text-sm">
+                  <thead className="text-stone-400">
+                    <tr className="[&>th]:pb-2 [&>th]:text-left [&>th]:font-medium">
+                      <th>Imagen</th>
+                      <th>Nombre</th>
+                      <th>Precio</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody className="[&_img]:h-10 [&_img]:w-10 [&_img]:rounded [&_img]:object-cover [&_td]:py-1 [&_.borrar]:font-bold [&_.borrar]:text-red-500" />
+                </table>
                 <a
                   href="#"
-                  className="agregar-carrito btn-2"
-                  data-id={i + 1}
+                  id="vaciar-carrito"
+                  className="mt-3 block rounded-lg bg-stone-100 py-2 text-center text-sm font-semibold text-stone-600 transition hover:bg-stone-200 dark:bg-stone-700 dark:text-stone-200 dark:hover:bg-stone-600"
                 >
-                  Agregar
+                  Vaciar Carrito
                 </a>
               </div>
             </div>
-          ))}
-        </div>
-      </main>
+          </div>
 
-      <section className="service">
-        <div className="service-1">
-          <img className="store" src="/img/perroconropita1.jpeg" alt="" />
-        </div>
-        <div className="service-2">
-          <img className="store" src="/img/gatoyperro1.jpeg" alt="" />
-        </div>
-        <div className="service-3">
-          <img className="store" src="/img/Gatoconropita1.jpeg" alt="" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/img/Logo_volviendo_a_casa-removebg-preview.png"
+            alt="De Vuelta a Casa"
+            className="w-56 sm:w-72"
+          />
         </div>
       </section>
 
-      <section className="contact container">
-        <form>
-          <input type="email" placeholder="Correo" />
-          <input type="submit" className="btn-3" />
-        </form>
-      </section>
-
-      <footer className="footer">
-        <div className="footer-content container">
-          {[0, 1, 2, 3, 4].map((col) => (
-            <div className="link" key={col}>
-              <h3>lorem</h3>
-              <ul>
-                <li>
-                  <a href="#">lorem</a>
-                </li>
-                <li>
-                  <a href="#">lorem</a>
-                </li>
-                <li>
-                  <a href="#">lorem</a>
-                </li>
-                <li>
-                  <a href="#">lorem</a>
-                </li>
-              </ul>
+      <main className="mx-auto max-w-6xl px-4 sm:px-6">
+        {/* Info strip */}
+        <section className="-mt-8 grid gap-4 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:grid-cols-3 dark:border-stone-800 dark:bg-stone-900">
+          {INFO.map((i) => (
+            <div key={i.title} className="text-center">
+              <div className="text-3xl">{i.icon}</div>
+              <h3 className="mt-2 font-bold">{i.title}</h3>
+              <p className="text-sm text-stone-500 dark:text-stone-400">
+                {i.text}
+              </p>
             </div>
           ))}
-        </div>
-      </footer>
+        </section>
+
+        {/* Products */}
+        <section className="py-12">
+          <h2 className="mb-8 text-3xl font-extrabold">Productos destacados</h2>
+          <div
+            id="lista-1"
+            className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4"
+          >
+            {PRODUCTS.map((img, i) => (
+              <div
+                key={i}
+                className="product group flex flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-stone-800 dark:bg-stone-900"
+              >
+                <div className="aspect-square overflow-hidden bg-stone-100 dark:bg-stone-800">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/img/${img}`}
+                    alt="Producto"
+                    className="h-full w-full object-cover transition group-hover:scale-105"
+                  />
+                </div>
+                <div className="product-txt flex flex-1 flex-col p-4">
+                  <h3 className="font-semibold">Producto</h3>
+                  <p className="precio mt-1 text-lg font-bold text-brand-600 dark:text-brand-400">
+                    $15.00
+                  </p>
+                  <a
+                    href="#"
+                    data-id={i + 1}
+                    className="agregar-carrito mt-3 block rounded-lg bg-brand-500 py-2 text-center text-sm font-semibold text-white transition hover:bg-brand-600"
+                  >
+                    Agregar
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Newsletter */}
+        <section className="pb-16">
+          <div className="rounded-2xl bg-brand-500 px-6 py-10 text-center text-white">
+            <h2 className="text-2xl font-bold">Mantente al día</h2>
+            <p className="mt-2 text-brand-50">
+              Recibe ofertas y novedades para tu mascota.
+            </p>
+            <form className="mx-auto mt-6 flex max-w-md flex-col gap-3 sm:flex-row">
+              <input
+                type="email"
+                placeholder="Correo"
+                className="flex-1 rounded-full px-5 py-3 text-stone-800 outline-none"
+              />
+              <button
+                type="submit"
+                className="rounded-full bg-stone-900 px-6 py-3 font-semibold text-white transition hover:bg-stone-800"
+              >
+                Suscribirme
+              </button>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <SiteFooter />
 
       <Script src="/Scripts/store.js" strategy="afterInteractive" />
-      <Script src="/Scripts/script.js" strategy="afterInteractive" />
     </>
   );
 }

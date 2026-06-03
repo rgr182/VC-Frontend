@@ -1,208 +1,165 @@
 import Script from "next/script";
+import SiteNav from "@/components/SiteNav";
+import SiteFooter from "@/components/SiteFooter";
 
 const MAPS_API_KEY = "AIzaSyAkx8ZPwcFziyPqjMNb247_Qm4ckd8KW7g";
 
 export default function MapaPage() {
   return (
     <>
-      <link
-        rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      />
-      <link rel="stylesheet" href="/Styles/Style.css" />
-      <link rel="stylesheet" href="/Styles/Modal.css" />
-      <link rel="stylesheet" href="/Styles/store.css" />
+      <SiteNav />
 
-      <header className="custom-header">
-        <div>
-          <h1>De Vuelta a Casa</h1>
-          <p>Una aplicación para ayudar a encontrar a lomitos extraviados</p>
+      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+        <div className="mb-6">
+          <h1 className="text-3xl font-extrabold sm:text-4xl">
+            Mapa de Perritos Extraviados
+          </h1>
+          <p className="mt-2 text-stone-600 dark:text-stone-400">
+            Haz clic derecho sobre el mapa para reportar una mascota en esa
+            ubicación.
+          </p>
         </div>
-        <div>
-          <a className="nav-link" href="/">
-            Inicio
-          </a>
-          <a className="nav-link" href="/store">
-            Pet Store
-          </a>
-          <a className="nav-link" href="/mapa">
-            Ver Mapa
-          </a>
-        </div>
-      </header>
 
-      {/* Modal 1 */}
-      <div
-        className="modal fade"
-        id="myModal"
-        tabIndex={-1}
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Detalle del la mascota
-              </h5>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">
-              <img id="modalImage" src="/images/imagen.jpg" alt="Imagen del Perrito" />
-              <p id="modalName">Nombre de la Mascota</p>
-              <p id="modalDescription">Descripción de la Mascota</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Modal 2 */}
-      <div
-        className="modal fade"
-        id="ChoiseModal"
-        tabIndex={-1}
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-        data-backdrop="static"
-      >
-        <div className="modal-dialog modal-dialog-centered modal-lg">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Selecciona una opción
-              </h5>
-            </div>
-            <div className="modal-body">
-              <p>¿Qué deseas hacer?</p>
-              <div className="btn-group" role="group" aria-label="Basic example">
-                <button type="button" className="btn btn-primary" id="searchBtn">
-                  Estoy buscando..
-                </button>
-                <ul className="list_show" id="menu">
-                  <li className="list_inside">
-                    <a href="#" className="nav_link nav_link--inside">
-                      Nombre
-                    </a>
-                    <input type="text" id="Nombre" name="Nombre" />
-                    <br />
-                  </li>
-                  <li className="list_inside">
-                    <a href="#" className="nav_link nav_link--inside">
-                      Descripción
-                    </a>
-                    <input type="text" id="Descripción" name="Descripción" />
-                    <br />
-                  </li>
-                  <li className="list_inside">
-                    <a href="#" className="nav_link nav_link--inside">
-                      Color
-                    </a>
-                    <input type="text" id="Color" name="Color" />
-                    <br />
-                  </li>
-                  <li className="list_inside">
-                    <a href="#" className="nav_link nav_link--inside">
-                      Género
-                    </a>
-                    <input type="text" id="Género" name="Género" />
-                    <br />
-                  </li>
-                  <li className="list_inside">
-                    <a href="#" className="nav_link nav_link--inside">
-                      Domicilio
-                    </a>
-                    <input type="text" id="Domicilio" name="Domicilio" />
-                    <br />
-                  </li>
-                  <li className="list_inside">
-                    <a href="#" className="nav_link nav_link--inside">
-                      Latitud
-                    </a>
-                    <input type="text" id="Latitud" name="Latitud" />
-                    <br />
-                  </li>
-                  <li className="list_inside">
-                    <a href="#" className="nav_link nav_link--inside">
-                      Longitud
-                    </a>
-                    <input type="text" id="Longitud" name="Longitud" />
-                    <br />
-                  </li>
-                  <li className="list_inside">
-                    <a href="#" className="nav_link nav_link--inside">
-                      Imagen
-                    </a>
-                    <input type="text" id="Imagen" name="Imagen" />
-                    <br />
-                  </li>
-                </ul>
-                <button type="button" className="btn btn-secondary" id="reportBtn">
-                  Quiero reportar un lomito extraviado
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="container">
-        <div id="searchContainer">
+        {/* Controls */}
+        <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center">
           <input
             type="text"
             id="searchInput"
             placeholder="Buscar por nombre o descripción..."
+            className="flex-1 rounded-full border border-stone-300 bg-white px-5 py-2.5 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-200 dark:border-stone-700 dark:bg-stone-800"
           />
+          <div className="flex gap-2">
+            <button
+              type="button"
+              id="lostBtn"
+              className="rounded-full bg-sky-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-600"
+            >
+              Mascotas Perdidas
+            </button>
+            <button
+              type="button"
+              id="reportedBtn"
+              className="rounded-full bg-amber-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-amber-600"
+            >
+              Mascotas Reportadas
+            </button>
+          </div>
         </div>
-        <div className="btn-group" role="group" aria-label="Filtrar mascotas">
-          <button type="button" className="btn btn-info" id="lostBtn">
-            Mascotas Perdidas
-          </button>
-          <button type="button" className="btn btn-warning" id="reportedBtn">
-            Mascotas Reportadas
-          </button>
+
+        <div id="mapContainer" className="overflow-hidden rounded-2xl shadow-md">
+          <div id="map" className="h-[70vh] w-full" />
         </div>
-        <h2>Mapa de Perritos Extraviados</h2>
-        <div id="mapContainer">
-          <div id="map"></div>
+      </main>
+
+      {/* Detail modal */}
+      <div
+        id="myModal"
+        className="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4"
+      >
+        <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl dark:bg-stone-800">
+          <div className="mb-4 flex items-center justify-between">
+            <h5 className="text-lg font-bold">Detalle de la mascota</h5>
+            <button
+              type="button"
+              data-close
+              aria-label="Cerrar"
+              className="grid h-8 w-8 place-items-center rounded-full text-2xl leading-none text-stone-400 transition hover:bg-stone-100 dark:hover:bg-stone-700"
+            >
+              &times;
+            </button>
+          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            id="modalImage"
+            src="/images/imagen.jpg"
+            alt="Imagen del Perrito"
+            className="mb-4 h-56 w-full rounded-xl object-cover"
+          />
+          <p id="modalName" className="text-lg font-semibold">
+            Nombre de la Mascota
+          </p>
+          <p id="modalDescription" className="mt-1 text-stone-600 dark:text-stone-400">
+            Descripción de la Mascota
+          </p>
         </div>
       </div>
 
-      <footer>
-        <h2>Derechos Reservados VC 2024</h2>
-      </footer>
+      {/* Choice modal */}
+      <div
+        id="ChoiseModal"
+        className="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4"
+      >
+        <div className="w-full max-w-lg rounded-2xl bg-white p-8 text-center shadow-xl dark:bg-stone-800">
+          <h5 className="text-2xl font-bold">Selecciona una opción</h5>
+          <p className="mt-2 text-stone-600 dark:text-stone-400">
+            ¿Qué deseas hacer?
+          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <button
+              type="button"
+              id="searchBtn"
+              className="flex-1 rounded-xl bg-brand-500 px-6 py-4 font-semibold text-white transition hover:bg-brand-600"
+            >
+              🔎 Estoy buscando a mi mascota
+            </button>
+            <button
+              type="button"
+              id="reportBtn"
+              className="flex-1 rounded-xl border border-stone-300 px-6 py-4 font-semibold transition hover:bg-stone-100 dark:border-stone-600 dark:hover:bg-stone-700"
+            >
+              📢 Quiero reportar un lomito extraviado
+            </button>
+          </div>
+        </div>
+      </div>
 
-      {/* Libraries — loaded in order */}
+      <SiteFooter />
+
+      {/* jQuery (required by the map scripts) — must be ready before them */}
       <Script
         src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-        strategy="afterInteractive"
-      />
-      <Script
-        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
-        strategy="afterInteractive"
-      />
-      <Script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
       />
 
-      {/* App scripts */}
+      {/* Minimal Bootstrap-style .modal() shim so the existing scripts work */}
+      <Script id="modal-shim" strategy="afterInteractive">
+        {`
+          (function () {
+            if (!window.jQuery) return;
+            jQuery.fn.modal = function (action) {
+              return this.each(function () {
+                if (action === 'hide') {
+                  this.classList.add('hidden');
+                  this.classList.remove('flex');
+                } else {
+                  this.classList.remove('hidden');
+                  this.classList.add('flex');
+                }
+              });
+            };
+            jQuery(function ($) {
+              // Close the detail modal via the × button or backdrop click
+              $('#myModal').on('click', function (e) {
+                if (e.target === this || $(e.target).closest('[data-close]').length) {
+                  $('#myModal').modal('hide');
+                }
+              });
+            });
+          })();
+        `}
+      </Script>
+
+      {/* App scripts (load in order) */}
       <Script src="/Scripts/geolocation.js" strategy="afterInteractive" />
       <Script src="/Scripts/initMap.js" strategy="afterInteractive" />
       <Script src="/Scripts/form.js" strategy="afterInteractive" />
       <Script src="/Scripts/markers.js" strategy="afterInteractive" />
       <Script src="/Scripts/main.js" strategy="afterInteractive" />
 
-      {/* Page-specific modal logic (was inline in index.html) */}
+      {/* Choice modal on load */}
       <Script id="map-modal-init" strategy="afterInteractive">
         {`
-          $(document).ready(function () {
+          jQuery(function ($) {
             $('#ChoiseModal').modal('show');
             $('#searchBtn').click(function () {
               localStorage.setItem('userChoice', 'buscando');
