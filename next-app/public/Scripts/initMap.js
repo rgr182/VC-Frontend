@@ -10,7 +10,7 @@ var SAMPLE_PETS = [
         address: 'Av. Reforma 123',
         offsetLat:  0.012, offsetLng:  0.008,
         statusId: 0,
-        imageURL: './images/perro.jpg'
+        imageURL: '/images/perro.jpg'
     },
     {
         name: 'Luna',
@@ -20,7 +20,7 @@ var SAMPLE_PETS = [
         address: 'Calle Pino 45',
         offsetLat: -0.006, offsetLng:  0.015,
         statusId: 1,
-        imageURL: './images/success-1.jpg'
+        imageURL: '/images/success-1.jpg'
     },
     {
         name: 'Rocky',
@@ -30,7 +30,7 @@ var SAMPLE_PETS = [
         address: 'Plaza Central',
         offsetLat:  0.004, offsetLng: -0.011,
         statusId: 0,
-        imageURL: './images/success-2.jpg'
+        imageURL: '/images/success-2.jpg'
     },
     {
         name: 'Maya',
@@ -40,7 +40,7 @@ var SAMPLE_PETS = [
         address: 'Calle Sauces 78',
         offsetLat: -0.014, offsetLng: -0.005,
         statusId: 1,
-        imageURL: './images/success-3.jpg'
+        imageURL: '/images/success-3.jpg'
     },
     {
         name: 'Toby',
@@ -50,7 +50,7 @@ var SAMPLE_PETS = [
         address: 'Av. Insurgentes 200',
         offsetLat:  0.009, offsetLng: -0.018,
         statusId: 0,
-        imageURL: './images/perro.jpg'
+        imageURL: '/images/perro.jpg'
     },
     {
         name: 'Nala',
@@ -60,7 +60,7 @@ var SAMPLE_PETS = [
         address: 'Calle Magnolia 12',
         offsetLat: -0.010, offsetLng:  0.020,
         statusId: 1,
-        imageURL: './images/success-1.jpg'
+        imageURL: '/images/success-1.jpg'
     }
 ];
 

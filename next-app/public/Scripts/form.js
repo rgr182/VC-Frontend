@@ -16,7 +16,7 @@ function addPet() {
         longitude: parseFloat($('#longitude').val()),
         createDate: new Date().toISOString(),
         status: localStorage.getItem('userChoice') === 'buscando' ? 0 : 1,
-        imageURL: './images/perro.jpg'
+        imageURL: '/images/perro.jpg'
     };
 
     console.log('Mascota agregada exitosamente (local):', petData);

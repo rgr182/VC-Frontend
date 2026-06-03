@@ -37,7 +37,7 @@ function addPet() {
     };
 
     uploadImage(fileInput, PetId).then(function (imgResult) {
-        petData.imageURL = imgResult.url || './images/perro.jpg';
+        petData.imageURL = imgResult.url || '/images/perro.jpg';
 
         console.log('Mascota agregada exitosamente (local):', petData);
         var marker = new google.maps.Marker({
