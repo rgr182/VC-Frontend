@@ -12,9 +12,12 @@ export default function MapaPage() {
       <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
         <div className="mb-6">
           <h1 className="text-3xl font-extrabold sm:text-4xl">
-            Mapa de Perritos Extraviados
+            Mapa de{" "}
+            <span className="bg-gradient-to-r from-brand-500 to-pink-500 bg-clip-text text-transparent">
+              Perritos Extraviados
+            </span>
           </h1>
-          <p className="mt-2 text-stone-600 dark:text-stone-400">
+          <p className="mt-2 text-stone-600">
             Haz clic derecho sobre el mapa para reportar una mascota en esa
             ubicación.
           </p>
@@ -26,7 +29,7 @@ export default function MapaPage() {
             type="text"
             id="searchInput"
             placeholder="Buscar por nombre o descripción..."
-            className="flex-1 rounded-full border border-stone-300 bg-white px-5 py-2.5 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-200 dark:border-stone-700 dark:bg-stone-800"
+            className="flex-1 rounded-full border border-stone-300 bg-white px-5 py-2.5 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-200"
           />
           <div className="flex gap-2">
             <button
@@ -46,7 +49,10 @@ export default function MapaPage() {
           </div>
         </div>
 
-        <div id="mapContainer" className="overflow-hidden rounded-2xl shadow-md">
+        <div
+          id="mapContainer"
+          className="overflow-hidden rounded-2xl border-4 border-white shadow-lg ring-1 ring-stone-200"
+        >
           <div id="map" className="h-[70vh] w-full" />
         </div>
       </main>
@@ -56,14 +62,14 @@ export default function MapaPage() {
         id="myModal"
         className="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4"
       >
-        <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl dark:bg-stone-800">
+        <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
           <div className="mb-4 flex items-center justify-between">
             <h5 className="text-lg font-bold">Detalle de la mascota</h5>
             <button
               type="button"
               data-close
               aria-label="Cerrar"
-              className="grid h-8 w-8 place-items-center rounded-full text-2xl leading-none text-stone-400 transition hover:bg-stone-100 dark:hover:bg-stone-700"
+              className="grid h-8 w-8 place-items-center rounded-full text-2xl leading-none text-stone-400 transition hover:bg-stone-100"
             >
               &times;
             </button>
@@ -78,7 +84,7 @@ export default function MapaPage() {
           <p id="modalName" className="text-lg font-semibold">
             Nombre de la Mascota
           </p>
-          <p id="modalDescription" className="mt-1 text-stone-600 dark:text-stone-400">
+          <p id="modalDescription" className="mt-1 text-stone-600">
             Descripción de la Mascota
           </p>
         </div>
@@ -89,23 +95,22 @@ export default function MapaPage() {
         id="ChoiseModal"
         className="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4"
       >
-        <div className="w-full max-w-lg rounded-2xl bg-white p-8 text-center shadow-xl dark:bg-stone-800">
+        <div className="w-full max-w-lg rounded-2xl bg-white p-8 text-center shadow-xl">
+          <div className="mx-auto mb-2 text-4xl">🐶</div>
           <h5 className="text-2xl font-bold">Selecciona una opción</h5>
-          <p className="mt-2 text-stone-600 dark:text-stone-400">
-            ¿Qué deseas hacer?
-          </p>
+          <p className="mt-2 text-stone-600">¿Qué deseas hacer?</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <button
               type="button"
               id="searchBtn"
-              className="flex-1 rounded-xl bg-brand-500 px-6 py-4 font-semibold text-white transition hover:bg-brand-600"
+              className="flex-1 rounded-xl bg-gradient-to-r from-brand-500 to-pink-500 px-6 py-4 font-semibold text-white transition hover:opacity-90"
             >
               🔎 Estoy buscando a mi mascota
             </button>
             <button
               type="button"
               id="reportBtn"
-              className="flex-1 rounded-xl border border-stone-300 px-6 py-4 font-semibold transition hover:bg-stone-100 dark:border-stone-600 dark:hover:bg-stone-700"
+              className="flex-1 rounded-xl bg-gradient-to-r from-teal-500 to-sky-500 px-6 py-4 font-semibold text-white transition hover:opacity-90"
             >
               📢 Quiero reportar un lomito extraviado
             </button>

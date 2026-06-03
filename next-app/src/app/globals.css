@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-/* Enable class-based dark mode (Tailwind v4) */
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme {
   --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 
@@ -21,9 +18,6 @@
 
 :root {
   color-scheme: light;
-}
-.dark {
-  color-scheme: dark;
 }
 
 html {

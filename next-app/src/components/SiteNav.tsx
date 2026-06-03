@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import DarkModeToggle from "./DarkModeToggle";
 
 const LINKS = [
   { href: "/", label: "Inicio" },
@@ -13,15 +12,21 @@ export default function SiteNav() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-stone-200/80 bg-white/80 backdrop-blur dark:border-stone-800 dark:bg-stone-900/80">
+    <header className="sticky top-0 z-40 border-b border-stone-200/80 bg-white/85 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         {/* Full reloads (plain <a>) keep the map page's scripts isolated */}
-        <a href="/" className="flex items-center gap-2 text-lg font-extrabold tracking-tight">
+        <a
+          href="/"
+          className="flex items-center gap-2 text-lg font-extrabold tracking-tight"
+        >
           <span className="text-2xl" aria-hidden>
             🐾
           </span>
           <span>
-            De Vuelta a <span className="text-brand-500">Casa</span>
+            De Vuelta a{" "}
+            <span className="bg-gradient-to-r from-brand-500 to-pink-500 bg-clip-text text-transparent">
+              Casa
+            </span>
           </span>
         </a>
 
@@ -38,17 +43,14 @@ export default function SiteNav() {
                 className={
                   "rounded-full px-3 py-1.5 text-sm font-medium transition sm:px-4 " +
                   (active
-                    ? "bg-brand-500 text-white shadow-sm"
-                    : "text-stone-600 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800")
+                    ? "bg-gradient-to-r from-brand-500 to-pink-500 text-white shadow-sm"
+                    : "text-stone-600 hover:bg-brand-50 hover:text-brand-600")
                 }
               >
                 {link.label}
               </a>
             );
           })}
-          <div className="ml-1 sm:ml-2">
-            <DarkModeToggle />
-          </div>
         </div>
       </nav>
     </header>
