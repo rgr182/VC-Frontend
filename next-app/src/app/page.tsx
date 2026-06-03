@@ -1,265 +1,176 @@
-import Script from "next/script";
+import SiteNav from "@/components/SiteNav";
+import SiteFooter from "@/components/SiteFooter";
+
+const FAQS = [
+  {
+    q: "¿Cómo reporto a una mascota perdida?",
+    a: "Para reportar la pérdida de una mascota, sólo tiene que acceder al Mapa de mascotas extraviadas y hacer clic en el área donde lo vio por última vez. Posteriormente se le pedirá que proporcione detalles sobre su mascota, incluida una descripción y una imagen de referencia.",
+  },
+  {
+    q: "¿La aplicación tiene algún costo?",
+    a: "No, reportar y buscar mascotas es completamente gratuito. Una parte de los ingresos de la Pet Store ayuda a sostener el proyecto.",
+  },
+  {
+    q: "¿Cómo sé si encontraron a mi mascota?",
+    a: "Las mascotas reportadas aparecen en el mapa interactivo. Revisa la zona donde la perdiste y filtra por nombre o descripción para encontrar coincidencias.",
+  },
+];
+
+const STORIES = [
+  {
+    img: "/images/success-1.jpg",
+    text: "Bobby volvió a casa tras 3 días perdido.",
+    color: "from-brand-400 to-pink-400",
+  },
+  {
+    img: "/images/success-2.jpg",
+    text: "Luna fue encontrada gracias a un vecino.",
+    color: "from-teal-400 to-sky-400",
+  },
+  {
+    img: "/images/success-3.jpg",
+    text: "Rocky se reunió con su familia en una semana.",
+    color: "from-violet-400 to-fuchsia-400",
+  },
+];
 
 export default function LandingPage() {
   return (
     <>
-      {/* Stylesheets (hoisted to <head> by React) */}
-      <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossOrigin="anonymous"
-        referrerPolicy="no-referrer"
-      />
-      <link rel="stylesheet" href="/Styles/landing.css" />
+      <SiteNav />
 
-      <nav className="navbar navbar-expand-sm justify-content-between">
-        <a className="navbar-brand" href="#">
-          LOGO <i className="fa-solid fa-paw"></i>
-        </a>
-        <div className="navbar-nav justify-content-end">
-          <a className="nav-link" href="/">
-            Inicio
-          </a>
-          <a className="nav-link" href="/store">
-            Pet Store
-          </a>
-          <a className="nav-link" href="/mapa">
-            Ver Mapa
-          </a>
-        </div>
-      </nav>
-
-      <header className="jumbotron img-fluid vh-100 d-flex align-items-center">
-        <div className="image-start text-end">
-          <h1 className="pb-4">Volviendo a Casa</h1>
-          <p className="pb-4">
-            ¿Perdiste a tu mascota? Estamos aquí para ayudar. Con nuestra
-            aplicación intuitiva y un equipo comprometido, te proporcionaremos
-            las herramientas y el apoyo que necesitas para reunirte con tu
-            compañero peludo lo antes posible.
-          </p>
-          <a href="/" className="btn btn-primary btn-lg btn-header">
-            Sobre Nosotros
-          </a>
+      {/* Hero */}
+      <header className="relative isolate overflow-hidden">
+        <div
+          className="absolute inset-0 -z-10 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/header.jpg')" }}
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-700/85 via-pink-600/55 to-violet-600/30" />
+        <div className="mx-auto flex min-h-[70vh] max-w-6xl items-center px-4 py-20 sm:px-6">
+          <div className="max-w-xl text-white">
+            <span className="inline-flex items-center rounded-full bg-white/20 px-3 py-1 text-sm font-semibold backdrop-blur">
+              🐾 Reúnete con tu compañero
+            </span>
+            <h1 className="mt-5 text-4xl font-extrabold leading-tight drop-shadow-sm sm:text-6xl">
+              Volviendo a Casa
+            </h1>
+            <p className="mt-5 text-lg text-white/90">
+              ¿Perdiste a tu mascota? Estamos aquí para ayudar. Con nuestra
+              aplicación intuitiva y un equipo comprometido, te proporcionamos
+              las herramientas y el apoyo que necesitas para reunirte con tu
+              compañero peludo lo antes posible.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="/mapa"
+                className="rounded-full bg-white px-6 py-3 font-semibold text-brand-600 shadow-lg transition hover:bg-brand-50"
+              >
+                Ver Mapa
+              </a>
+              <a
+                href="#faq"
+                className="rounded-full border border-white/50 bg-white/10 px-6 py-3 font-semibold text-white backdrop-blur transition hover:bg-white/20"
+              >
+                Sobre Nosotros
+              </a>
+            </div>
+          </div>
         </div>
       </header>
 
-      <main>
-        <div className="container text-center py-5">
-          <div className="row">
-            <section className="col">
-              <h2 className="py-3">
-                Pet Store <i className="fa-solid fa-cart-shopping"></i>
-              </h2>
-              <p>
-                Eche un vistazo a nuestra selección de artículos y accesorios
-                para mascotas. Una parte de los ingresos se destina a apoyar
-                nuestros esfuerzos de rescate de mascotas perdidas.
-              </p>
-              <a href="/store" className="btn btn-primary">
-                Compre Ahora
-              </a>
-            </section>
-            <section className="col">
-              <h2 className="py-3">
-                Mapa de Mascotas <i className="fa-solid fa-dog"></i>
-              </h2>
-              <p>
-                Informe y busque mascotas perdidas o encontradas en su zona
-                utilizando nuestro mapa interactivo.
-              </p>
-              <a href="/mapa" className="btn btn-accent">
-                Ver Mapa
-              </a>
-            </section>
+      <main className="mx-auto max-w-6xl px-4 sm:px-6">
+        {/* Feature cards */}
+        <section className="-mt-12 grid gap-6 sm:grid-cols-2">
+          <div className="rounded-2xl border-t-4 border-brand-500 bg-white p-8 shadow-md transition hover:-translate-y-1 hover:shadow-xl">
+            <div className="grid h-14 w-14 place-items-center rounded-2xl bg-brand-100 text-3xl">
+              🛒
+            </div>
+            <h2 className="mt-4 text-xl font-bold">Pet Store</h2>
+            <p className="mt-2 text-stone-600">
+              Eche un vistazo a nuestra selección de artículos y accesorios para
+              mascotas. Una parte de los ingresos se destina a apoyar nuestros
+              esfuerzos de rescate.
+            </p>
+            <a
+              href="/store"
+              className="mt-5 inline-block font-semibold text-brand-600 hover:text-brand-700"
+            >
+              Compre Ahora →
+            </a>
           </div>
-        </div>
-
-        <section id="faq" className="container py-5">
-          <h2 className="py-3">
-            Preguntas Frecuentes{" "}
-            <i className="fa-regular fa-circle-question"></i>
-          </h2>
-          <div className="accordion" id="FAQaccordion">
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button
-                  className="accordion-button"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                >
-                  ¿Cómo reporto a una mascota perdida?
-                </button>
-              </h2>
-              <div
-                id="collapseOne"
-                className="accordion-collapse collapse show"
-                data-bs-parent="#FAQaccordion"
-              >
-                <div className="accordion-body">
-                  Para reportar la pérdida de una mascota, sólo tiene que acceder
-                  al Mapa de mascotas extraviadas y hacer clic en el área donde lo
-                  vio por ultima vez, posteriormente se le pedirá que proporcione
-                  detalles sobre su mascota, incluida una descripción y una imagen
-                  de referencia.
-                </div>
-              </div>
+          <div className="rounded-2xl border-t-4 border-teal-500 bg-white p-8 shadow-md transition hover:-translate-y-1 hover:shadow-xl">
+            <div className="grid h-14 w-14 place-items-center rounded-2xl bg-teal-100 text-3xl">
+              🐕
             </div>
-
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button
-                  className="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="collapseTwo"
-                >
-                  Esto es una pregunta frecuente
-                </button>
-              </h2>
-              <div
-                id="collapseTwo"
-                className="accordion-collapse collapse"
-                data-bs-parent="#FAQaccordion"
-              >
-                <div className="accordion-body">
-                  Esto es una respuesta a una pregunta frecuente.
-                </div>
-              </div>
-            </div>
-
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button
-                  className="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseThree"
-                  aria-expanded="false"
-                  aria-controls="collapseThree"
-                >
-                  Esto es una pregunta frecuente #2
-                </button>
-              </h2>
-              <div
-                id="collapseThree"
-                className="accordion-collapse collapse"
-                data-bs-parent="#FAQaccordion"
-              >
-                <div className="accordion-body">
-                  Esto es una respuesta a una pregunta frecuente #2.
-                </div>
-              </div>
-            </div>
+            <h2 className="mt-4 text-xl font-bold">Mapa de Mascotas</h2>
+            <p className="mt-2 text-stone-600">
+              Informe y busque mascotas perdidas o encontradas en su zona
+              utilizando nuestro mapa interactivo en tiempo real.
+            </p>
+            <a
+              href="/mapa"
+              className="mt-5 inline-block font-semibold text-teal-600 hover:text-teal-700"
+            >
+              Ver Mapa →
+            </a>
           </div>
         </section>
 
-        <section id="gallery" className="container py-5">
-          <h2 className="py-3">Historias de Éxito</h2>
-          <div className="row">
-            <div className="col-md-4 mb-4">
-              <div className="card h-100">
-                <div className="card-img-top-wrapper">
-                  <img
-                    src="/images/success-1.jpg"
-                    className="card-img-top"
-                    alt="Happy Pet"
-                  />
-                </div>
-                <div className="card-body">
-                  <p className="card-text">
-                    Esta es una historia de éxito te lo juro #1
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4 mb-4">
-              <div className="card h-100">
-                <div className="card-img-top-wrapper">
-                  <img
-                    src="/images/success-2.jpg"
-                    className="card-img-top"
-                    alt="Happy Pet"
-                  />
-                </div>
-                <div className="card-body">
-                  <p className="card-text">
-                    Esta es una historia de éxito te lo juro #2
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4 mb-4">
-              <div className="card h-100">
-                <div className="card-img-top-wrapper">
-                  <img
-                    src="/images/success-3.jpg"
-                    className="card-img-top"
-                    alt="Happy Pet"
-                  />
-                </div>
-                <div className="card-body">
-                  <p className="card-text">
-                    Esta es una historia de éxito te lo juro #3
-                  </p>
-                </div>
-              </div>
-            </div>
+        {/* FAQ */}
+        <section id="faq" className="py-16">
+          <h2 className="text-center text-3xl font-extrabold">
+            Preguntas{" "}
+            <span className="bg-gradient-to-r from-brand-500 to-pink-500 bg-clip-text text-transparent">
+              Frecuentes
+            </span>
+          </h2>
+          <div className="mx-auto mt-8 max-w-3xl space-y-3">
+            {FAQS.map((item, i) => (
+              <details
+                key={i}
+                open={i === 0}
+                className="group rounded-xl border border-stone-200 bg-white p-5 shadow-sm open:border-brand-200 open:ring-1 open:ring-brand-100"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between font-semibold">
+                  {item.q}
+                  <span className="ml-4 grid h-7 w-7 place-items-center rounded-full bg-brand-100 text-brand-600 transition group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+                <p className="mt-3 text-stone-600">{item.a}</p>
+              </details>
+            ))}
           </div>
         </section>
       </main>
 
-      <footer className="py-3">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <h5>¡Siguenos!</h5>
-              <ul className="list-inline">
-                <li className="list-inline-item">
-                  <a href="https://www.facebook.com/">
-                    <i className="fab fa-facebook"></i>
-                  </a>
-                </li>
-                <li className="list-inline-item">
-                  <a href="https://twitter.com/">
-                    <i className="fab fa-twitter"></i>
-                  </a>
-                </li>
-                <li className="list-inline-item">
-                  <a href="https://www.instagram.com/">
-                    <i className="fab fa-instagram"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="col-md-6 text-right">
-              <button id="darkModeToggle" className="btn btn-light">
-                <i className="fa-solid fa-moon"></i>
-              </button>
-            </div>
+      {/* Success stories — colorful band */}
+      <section className="bg-gradient-to-br from-brand-50 via-pink-50 to-violet-50 py-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <h2 className="text-center text-3xl font-extrabold">
+            Historias de Éxito
+          </h2>
+          <div className="mt-8 grid gap-6 sm:grid-cols-3">
+            {STORIES.map((s, i) => (
+              <article
+                key={i}
+                className="overflow-hidden rounded-2xl bg-white shadow-md transition hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div className={`h-2 bg-gradient-to-r ${s.color}`} />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={s.img}
+                  alt="Mascota feliz"
+                  className="h-48 w-full object-cover"
+                />
+                <p className="p-5 text-stone-600">{s.text}</p>
+              </article>
+            ))}
           </div>
         </div>
-      </footer>
+      </section>
 
-      <Script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossOrigin="anonymous"
-        strategy="afterInteractive"
-      />
-      <Script src="/Scripts/landingP.js" strategy="afterInteractive" />
+      <SiteFooter />
     </>
   );
 }
