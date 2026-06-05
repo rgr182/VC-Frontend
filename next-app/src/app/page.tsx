@@ -80,7 +80,7 @@ export default function LandingPage() {
 
       <main className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Feature cards */}
-        <section className="-mt-12 grid gap-6 sm:grid-cols-2">
+        <section className="mt-12 grid gap-6 sm:grid-cols-2">
           <div className="rounded-2xl border-t-4 border-brand-500 bg-white p-8 shadow-md transition hover:-translate-y-1 hover:shadow-xl">
             <div className="grid h-14 w-14 place-items-center rounded-2xl bg-brand-100 text-3xl">
               🛒
