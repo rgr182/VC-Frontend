@@ -3,9 +3,8 @@
 import { usePathname } from "next/navigation";
 
 const LINKS = [
-  { href: "/", label: "Opción 1" },
-  { href: "/mapa", label: "Opción 2" },
-  { href: "/store", label: "Opción 3" },
+  { href: "/", label: "Inicio" },
+  { href: "/store", label: "Tienda" },
 ];
 
 export default function SiteNav() {
