@@ -3,9 +3,9 @@
 import { usePathname } from "next/navigation";
 
 const LINKS = [
-  { href: "/", label: "Inicio" },
-  { href: "/mapa", label: "Ver Mapa" },
-  { href: "/store", label: "Pet Store" },
+  { href: "/", label: "Opción 1" },
+  { href: "/mapa", label: "Opción 2" },
+  { href: "/store", label: "Opción 3" },
 ];
 
 export default function SiteNav() {
@@ -17,17 +17,9 @@ export default function SiteNav() {
         {/* Full reloads (plain <a>) keep the map page's scripts isolated */}
         <a
           href="/"
-          className="flex items-center gap-2 text-lg font-extrabold tracking-tight"
+          className="flex items-center gap-2 text-lg font-extrabold tracking-tight text-stone-900"
         >
-          <span className="text-2xl" aria-hidden>
-            🐾
-          </span>
-          <span>
-            De Vuelta a{" "}
-            <span className="bg-gradient-to-r from-brand-500 to-pink-500 bg-clip-text text-transparent">
-              Casa
-            </span>
-          </span>
+          <span>Clean Boilerplate</span>
         </a>
 
         <div className="flex items-center gap-1 sm:gap-2">
@@ -43,8 +35,8 @@ export default function SiteNav() {
                 className={
                   "rounded-full px-3 py-1.5 text-sm font-medium transition sm:px-4 " +
                   (active
-                    ? "bg-gradient-to-r from-brand-500 to-pink-500 text-white shadow-sm"
-                    : "text-stone-600 hover:bg-brand-50 hover:text-brand-600")
+                    ? "bg-stone-800 text-white shadow-sm"
+                    : "text-stone-600 hover:bg-stone-100 hover:text-stone-800")
                 }
               >
                 {link.label}

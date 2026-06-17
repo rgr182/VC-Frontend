@@ -9,9 +9,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "De Vuelta a Casa",
-  description: "Una aplicación para ayudar a encontrar a lomitos extraviados",
-  icons: { icon: "/images/icon.png" },
+  title: "Clean Boilerplate",
+  description: "Clean boilerplate",
 };
 
 export default function RootLayout({
