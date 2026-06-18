@@ -34,7 +34,7 @@ export default function SiteNav() {
                 className={
                   "rounded-full px-3 py-1.5 text-sm font-medium transition sm:px-4 " +
                   (active
-                    ? "bg-stone-800 text-white shadow-sm"
+                    ? "bg-violet-600 text-white shadow-sm"
                     : "text-stone-600 hover:bg-stone-100 hover:text-stone-800")
                 }
               >
