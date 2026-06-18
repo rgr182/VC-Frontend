@@ -1,6 +1,7 @@
 import Script from "next/script";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
+import HeroBanner from "@/components/HeroBanner";
 
 const PRODUCTS = Array.from({ length: 8 }, (_, i) => `producto-${i + 1}`);
 
@@ -30,24 +31,11 @@ export default function StorePage() {
     <>
       <SiteNav />
 
-      {/* Hero */}
-      <section className="border-b border-stone-200 bg-stone-50">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-4 py-14 sm:flex-row sm:justify-between sm:px-6">
-          <div className="max-w-lg text-center sm:text-left">
-            <span className="font-semibold text-stone-600">Sección</span>
-            <h1 className="mt-2 text-4xl font-extrabold leading-tight sm:text-5xl text-stone-800">
-              Título de la sección
-            </h1>
-            <p className="mt-4 text-stone-600">
-              Descripción genérica de la sección.
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroBanner title="Tienda" description="Descripción de la tienda." />
 
       <main className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Info strip */}
-        <section className="-mt-8 grid gap-4 rounded-2xl border border-stone-200 bg-white p-6 shadow-md sm:grid-cols-3">
+        <section className="mt-8 grid gap-4 rounded-2xl border border-stone-200 bg-white p-6 shadow-md sm:grid-cols-3">
           {INFO.map((i) => (
             <div key={i.title} className="flex flex-col items-center text-center">
               <div

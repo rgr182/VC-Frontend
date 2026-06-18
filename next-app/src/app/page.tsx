@@ -1,5 +1,6 @@
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
+import HeroBanner from "@/components/HeroBanner";
 
 const FAQS = [
   {
@@ -33,33 +34,7 @@ export default function LandingPage() {
     <>
       <SiteNav />
 
-      {/* Hero */}
-      <header className="relative isolate overflow-hidden bg-stone-800">
-        <div className="mx-auto flex min-h-[50vh] max-w-6xl items-center px-4 py-20 sm:px-6">
-          <div className="max-w-xl text-white">
-            <h1 className="text-4xl font-extrabold leading-tight sm:text-6xl">
-              Clean Boilerplate
-            </h1>
-            <p className="mt-5 text-lg text-stone-300">
-              Descripción del proyecto.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="/mapa"
-                className="rounded-full bg-white px-6 py-3 font-semibold text-stone-800 shadow-lg transition hover:bg-stone-200"
-              >
-                Opción 2
-              </a>
-              <a
-                href="/store"
-                className="rounded-full border border-white/50 px-6 py-3 font-semibold text-white transition hover:bg-white/20"
-              >
-                Opción 3
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
+      <HeroBanner title="Clean Boilerplate" description="Descripción del proyecto." />
 
       <main className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Feature cards */}
@@ -88,7 +63,7 @@ export default function LandingPage() {
               Descripción de la sección 2.
             </p>
             <a
-              href="/mapa"
+              href="/"
               className="mt-5 inline-block font-semibold text-stone-700 hover:text-stone-900"
             >
               Ir →
